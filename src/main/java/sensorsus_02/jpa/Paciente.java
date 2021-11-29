@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
 public class Paciente extends Usuario implements Serializable {
 
-    // TODO implementar relacionamento com avaliacao
+    // TODO implementar relacionamento com AvaliacaoPaciente
     
     @Column(name = "TXT_NUMERO_SUS", nullable = false, length = 50)
     private String numeroSus;
@@ -21,6 +21,30 @@ public class Paciente extends Usuario implements Serializable {
     private String login;
     @Column(name = "TXT_SENHA", nullable = false, length = 15)
     private String senha;
+
+    public String getNumeroSus() {
+        return numeroSus;
+    }
+
+    public void setNumeroSus(String numeroSus) {
+        this.numeroSus = numeroSus;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     @Override
     public String toString() {
