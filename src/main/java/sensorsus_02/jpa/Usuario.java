@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -20,4 +21,6 @@ public abstract class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+    @Column(name = "TXT_NOME")
+    protected String nome;
 }
