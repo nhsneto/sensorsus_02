@@ -1,5 +1,6 @@
 package sensorsus_02.jpa;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import org.eclipse.persistence.internal.jpa.parsing.GenerationContext;
 
 @Entity
 @Table(name = "TB_AVALIACAO_PACIENTE")
-public class AvaliacaoPaciente {
+public class AvaliacaoPaciente implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
