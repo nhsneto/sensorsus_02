@@ -3,9 +3,12 @@ package sensorsus_02.jpa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,9 @@ public class AvaliacaoPaciente implements Serializable {
     private Long id;
     
     // TODO implementar a relacao com Paciente
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_PACIENTE", referencedColumnName = "ID")
+    private Paciente paciente;
     
     // TODO implementar a relacao com Estabelecimento
     
@@ -39,5 +45,13 @@ public class AvaliacaoPaciente implements Serializable {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+    
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 }
