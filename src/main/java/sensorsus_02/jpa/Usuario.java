@@ -27,4 +27,6 @@ public abstract class Usuario implements Serializable {
     protected String email;
     @Column(name = "INT_IDADE")
     protected Integer idade;
+    @Column(name = "TXT_SENHA")
+    protected String senha;
 }
