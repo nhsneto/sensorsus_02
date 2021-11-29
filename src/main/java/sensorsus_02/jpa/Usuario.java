@@ -23,4 +23,6 @@ public abstract class Usuario implements Serializable {
     protected Long id;
     @Column(name = "TXT_NOME")
     protected String nome;
+    @Column(name = "TXT_EMAIL")
+    protected String email;
 }
