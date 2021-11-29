@@ -3,9 +3,12 @@ package sensorsus_02.jpa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +19,9 @@ public class AvaliacaoProfissional implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO implementar a relacao com ProfissionalSaude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_PROFISSIONAL_SAUDO", referencedColumnName = "ID")
+    private ProfissionalSaude profissionalSaude;
     
     // TODO implementar a relacao com Estabelecimento
     
@@ -37,5 +42,13 @@ public class AvaliacaoProfissional implements Serializable {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+    
+    public ProfissionalSaude getProfissionalSaude() {
+        return profissionalSaude;
+    }
+
+    public void setProfissionalSaude(ProfissionalSaude profissionalSaude) {
+        this.profissionalSaude = profissionalSaude;
     }
 }
