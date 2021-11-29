@@ -1,5 +1,6 @@
 package sensorsus_02.jpa;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_SERVICO")
-public class Servico {
+public class Servico implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
