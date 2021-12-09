@@ -3,9 +3,11 @@ package sensorsus_02.jpa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +17,10 @@ public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @OneToOne(mappedBy = "endereco", optional = false, fetch = FetchType.LAZY)
+    private Estabelecimento estabelecimento;
+
     @Column(name = "TXT_ESTADO", nullable = false, length = 50)
     private String estado;
     @Column(name = "TXT_CIDADE", nullable = false, length = 150)
@@ -34,6 +40,14 @@ public class Endereco implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
 
     public String getEstado() {
