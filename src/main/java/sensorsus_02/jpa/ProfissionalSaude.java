@@ -26,8 +26,6 @@ public class ProfissionalSaude extends Usuario implements Serializable {
     private String codigoCns;
     @Column(name = "TXT_MATRICULA", nullable = false, length = 30)
     private String matricula;
-    @Column(name = "TXT_SENHA", nullable = false, length = 15)
-    private String senha;
 
     public String getCodigoCns() {
         return codigoCns;
@@ -43,14 +41,6 @@ public class ProfissionalSaude extends Usuario implements Serializable {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
