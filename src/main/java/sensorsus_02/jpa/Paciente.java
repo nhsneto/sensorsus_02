@@ -45,10 +45,6 @@ public class Paciente extends Usuario implements Serializable {
         return avaliacoesPaciente;
     }
 
-    public void setAvaliacoesPaciente(List<AvaliacaoPaciente> avaliacoesPaciente) {
-        this.avaliacoesPaciente = avaliacoesPaciente;
-    }
-
     public void adicionar(AvaliacaoPaciente avaliacaoPaciente) {
         if (this.avaliacoesPaciente == null) {
             this.avaliacoesPaciente = new ArrayList<>();
