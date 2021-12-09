@@ -43,6 +43,15 @@ public class Estabelecimento implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+        this.endereco.setEstabelecimento(this);
+    }
 
     public String getNome() {
         return nome;
