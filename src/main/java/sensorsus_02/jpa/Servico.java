@@ -1,11 +1,16 @@
 package sensorsus_02.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +22,9 @@ public class Servico implements Serializable {
     private Long id;
     
     // TODO implementar o relacionamento com AvaliacaoPaciente
+    @OneToMany(mappedBy = "servico", fetch = FetchType.LAZY, cascade = CascadeType.ALL, 
+            orphanRemoval = true)
+    private List<AvaliacaoPaciente> avaliacoesPaciente;
     
     // TODO implementar o relacionamento com Estabelecimento (apenas na parte do estabelecimento)
     // slide aula 03
@@ -25,4 +33,16 @@ public class Servico implements Serializable {
     private String nome;
     @Column(name = "TXT_DEPARTAMENTO", nullable = true, length = 200)
     private String departamento;
+    
+    public void adicionar(AvaliacaoPaciente avaliacaoPaciente) {
+        if (this.avaliacoesPaciente == null) {
+            this.avaliacoesPaciente = new ArrayList<>();
+        }
+        this.avaliacoesPaciente.add(avaliacaoPaciente);
+        avaliacaoPaciente.setServico(this);
+    }
+
+    public boolean remover(AvaliacaoPaciente avaliacaoPaciente) {
+        return avaliacoesPaciente.remove(avaliacaoPaciente);
+    }
 }
