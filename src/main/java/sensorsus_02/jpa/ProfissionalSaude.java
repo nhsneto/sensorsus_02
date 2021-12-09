@@ -58,4 +58,9 @@ public class ProfissionalSaude extends Usuario implements Serializable {
     public void remover(AvaliacaoProfissional avaliacaoProfissional) {
         this.avaliacoesProfissional.remove(avaliacaoProfissional);
     }
+    
+    @Override
+    public String toString() {
+        return "sensorsus_02.jpa.ProfissionalSaude[ id=" + id + " ]";
+    }
 }
