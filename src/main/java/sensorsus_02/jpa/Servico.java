@@ -21,7 +21,6 @@ public class Servico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    // TODO implementar o relacionamento com AvaliacaoPaciente
     @OneToMany(mappedBy = "servico", fetch = FetchType.LAZY, cascade = CascadeType.ALL, 
             orphanRemoval = true)
     private List<AvaliacaoPaciente> avaliacoesPaciente;
