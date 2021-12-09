@@ -25,7 +25,9 @@ public class AvaliacaoPaciente implements Serializable {
     
     // TODO implementar a relacao com Estabelecimento
     
-    // TODO implementar a relacao com Servico
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_SERVICO", referencedColumnName = "ID")
+    private Servico servico;
     
     @Column(name = "TXT_COMENTARIO", nullable = false, length = 255)
     private String comentario;
@@ -52,5 +54,13 @@ public class AvaliacaoPaciente implements Serializable {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 }
