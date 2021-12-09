@@ -34,6 +34,18 @@ public class Servico implements Serializable {
     @Column(name = "TXT_DEPARTAMENTO", nullable = true, length = 200)
     private String departamento;
     
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<AvaliacaoPaciente> getAvaliacoesPaciente() {
+        return avaliacoesPaciente;
+    }
+    
     public void adicionar(AvaliacaoPaciente avaliacaoPaciente) {
         if (this.avaliacoesPaciente == null) {
             this.avaliacoesPaciente = new ArrayList<>();
@@ -44,5 +56,21 @@ public class Servico implements Serializable {
 
     public boolean remover(AvaliacaoPaciente avaliacaoPaciente) {
         return avaliacoesPaciente.remove(avaliacaoPaciente);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 }
