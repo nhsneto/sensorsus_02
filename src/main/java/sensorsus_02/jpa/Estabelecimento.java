@@ -20,7 +20,6 @@ public class Estabelecimento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO implementar relacionamento com Endereco
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "ID")
     private Endereco endereco;
