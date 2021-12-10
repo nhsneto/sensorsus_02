@@ -73,4 +73,25 @@ public class AvaliacaoPaciente implements Serializable {
     public void setEstabelecimento(Estabelecimento estabelecimento) {
         this.estabelecimento = estabelecimento;
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof AvaliacaoPaciente)) {
+            return false;
+        }
+        AvaliacaoPaciente other = (AvaliacaoPaciente) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "sensorsus_02.jpa.AvaliacaoPaciente[ id=" + id + " ]";
+    }
 }
