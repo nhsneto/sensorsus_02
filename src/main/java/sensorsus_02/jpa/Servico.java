@@ -42,7 +42,7 @@ public class Servico implements Serializable {
         return avaliacoesPaciente;
     }
     
-    public void adicionar(AvaliacaoPaciente avaliacaoPaciente) {
+    public void adicionaAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
         if (this.avaliacoesPaciente == null) {
             this.avaliacoesPaciente = new ArrayList<>();
         }
