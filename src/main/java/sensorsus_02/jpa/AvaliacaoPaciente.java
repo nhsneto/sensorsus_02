@@ -23,7 +23,9 @@ public class AvaliacaoPaciente implements Serializable {
     @JoinColumn(name = "ID_PACIENTE", referencedColumnName = "ID")
     private Paciente paciente;
     
-    // TODO implementar a relacao com Estabelecimento
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_ESTABELECIMENTO", referencedColumnName = "ID")
+    private Estabelecimento estabelecimento;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_SERVICO", referencedColumnName = "ID")
@@ -62,5 +64,13 @@ public class AvaliacaoPaciente implements Serializable {
 
     public void setServico(Servico servico) {
         this.servico = servico;
+    }
+    
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
 }
