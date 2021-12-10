@@ -27,6 +27,8 @@ public abstract class Usuario implements Serializable {
     protected String email;
     @Column(name = "INT_IDADE")
     protected Integer idade;
+    @Column(name = "TXT_LOGIN", nullable = false, length = 30)
+    private String login;
     @Column(name = "TXT_SENHA", nullable = false, length = 15)
     protected String senha;
 
@@ -60,6 +62,14 @@ public abstract class Usuario implements Serializable {
 
     public void setIdade(Integer idade) {
         this.idade = idade;
+    }
+    
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSenha() {
