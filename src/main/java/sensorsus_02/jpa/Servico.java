@@ -50,7 +50,7 @@ public class Servico implements Serializable {
         avaliacaoPaciente.setServico(this);
     }
 
-    public boolean remover(AvaliacaoPaciente avaliacaoPaciente) {
+    public boolean removeAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
         return avaliacoesPaciente.remove(avaliacaoPaciente);
     }
 
