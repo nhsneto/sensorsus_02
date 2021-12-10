@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataset></dataset>
+<dataset>
+    <!-- Usuario id = 1 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" int_idade="64"
+            txt_login="jhsb01" txt_senha="jose1234"/>
+    <TB_PACIENTE id_usuario="1" numeroSus="123 1234 1234 1234"/>
+</dataset>
