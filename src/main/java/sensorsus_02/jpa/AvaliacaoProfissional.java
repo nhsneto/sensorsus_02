@@ -23,7 +23,9 @@ public class AvaliacaoProfissional implements Serializable {
     @JoinColumn(name = "ID_PROFISSIONAL_SAUDO", referencedColumnName = "ID")
     private ProfissionalSaude profissionalSaude;
     
-    // TODO implementar a relacao com Estabelecimento
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_ESTABELECIMENTO", referencedColumnName = "ID")
+    private Estabelecimento estabelecimento;
     
     @Column(name = "TXT_COMENTARIO", nullable = false, length = 255)
     private String comentario;
@@ -50,5 +52,13 @@ public class AvaliacaoProfissional implements Serializable {
 
     public void setProfissionalSaude(ProfissionalSaude profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
+    }
+    
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
 }
