@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,7 +35,9 @@ public class Estabelecimento implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "ID_SERVICO") })
     private List<Servico> servicos;
     
-    // TODO implementar relacionamento com AvaliacaoPaciente
+    @OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<AvaliacaoPaciente> avaliacoesPaciente;
     
     // TODO implementar relacionamento com AvaliacaoProfissional
 
@@ -69,6 +72,22 @@ public class Estabelecimento implements Serializable {
             this.servicos = new ArrayList<>();
         }
         servicos.add(servico);
+    }
+    
+    public List<AvaliacaoPaciente> getAvaliacoesPaciente() {
+        return avaliacoesPaciente;
+    }
+    
+    public void adicionaAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
+        if (this.avaliacoesPaciente == null) {
+            this.avaliacoesPaciente = new ArrayList<>();
+        }
+        avaliacoesPaciente.add(avaliacaoPaciente);
+        avaliacaoPaciente.setEstabelecimento(this);
+    }
+    
+    public boolean removeAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
+        return this.avaliacoesPaciente.remove(avaliacaoPaciente);
     }
     
     public String getNome() {
