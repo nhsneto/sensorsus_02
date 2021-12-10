@@ -25,9 +25,6 @@ public class Servico implements Serializable {
             orphanRemoval = true)
     private List<AvaliacaoPaciente> avaliacoesPaciente;
     
-    // TODO implementar o relacionamento com Estabelecimento (apenas na parte do estabelecimento)
-    // slide aula 03
-    
     @Column(name = "TXT_NOME", nullable = false, length = 200)
     private String nome;
     @Column(name = "TXT_DEPARTAMENTO", nullable = true, length = 200)
