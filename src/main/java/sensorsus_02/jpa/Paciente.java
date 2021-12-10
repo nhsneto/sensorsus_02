@@ -22,8 +22,6 @@ public class Paciente extends Usuario implements Serializable {
 
     @Column(name = "TXT_NUMERO_SUS", nullable = false, length = 50)
     private String numeroSus;
-    @Column(name = "TXT_LOGIN", nullable = false, length = 30)
-    private String login;
 
     public String getNumeroSus() {
         return numeroSus;
@@ -31,14 +29,6 @@ public class Paciente extends Usuario implements Serializable {
 
     public void setNumeroSus(String numeroSus) {
         this.numeroSus = numeroSus;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public List<AvaliacaoPaciente> getAvaliacoesPaciente() {
