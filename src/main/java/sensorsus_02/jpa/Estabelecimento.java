@@ -35,10 +35,6 @@ public class Estabelecimento implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "ID_SERVICO") })
     private List<Servico> servicos;
     
-    @OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<AvaliacaoProfissional> avaliacoesProfissional;
-
     @Column(name = "TXT_NOME", nullable = false, length = 255)
     private String nome;
     @Column(name = "TXT_CODIGO_CNES", nullable = false, unique = true, length = 40)
@@ -72,21 +68,21 @@ public class Estabelecimento implements Serializable {
         servicos.add(servico);
     }
     
-    public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
-        return avaliacoesProfissional;
-    }
-    
-    public void adicionaAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
-        if (this.avaliacoesProfissional == null) {
-            this.avaliacoesProfissional = new ArrayList<>();
-        }
-        avaliacoesProfissional.add(avaliacaoProfissional);
-        avaliacaoProfissional.setEstabelecimento(this);
-    }
-    
-    public boolean removeAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
-        return this.avaliacoesProfissional.remove(avaliacaoProfissional);
-    }
+//    public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
+//        return avaliacoesProfissional;
+//    }
+//    
+//    public void adicionaAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
+//        if (this.avaliacoesProfissional == null) {
+//            this.avaliacoesProfissional = new ArrayList<>();
+//        }
+//        avaliacoesProfissional.add(avaliacaoProfissional);
+//        avaliacaoProfissional.setEstabelecimento(this);
+//    }
+//    
+//    public boolean removeAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
+//        return this.avaliacoesProfissional.remove(avaliacaoProfissional);
+//    }
     
     public String getNome() {
         return nome;
