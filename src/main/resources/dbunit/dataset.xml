@@ -14,7 +14,8 @@
     <TB_SERVICO txt_nome="Limpeza da Recepção" txt_departamento="Serviços Gerais"/>
     
     <!-- Estabelecimento id = 1 -->
-    <TB_ESTABELECIMENTO txt_nome="Hospital Oswaldo Cruz" txt_codigoCnes="111112222233333"/>
+    <TB_ESTABELECIMENTO id_endereco="1" txt_nome="Hospital Oswaldo Cruz" 
+            txt_codigoCnes="111112222233333"/>
 
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="1" id_servico="1"/>
     
