@@ -18,35 +18,35 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
 public class ProfissionalSaude extends Usuario implements Serializable {
 
-    @OneToMany(mappedBy = "profissionalSaude", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AvaliacaoProfissional> avaliacoesProfissional;
+    private List<Avaliacao> avaliacoes;
 
     @Column(name = "TXT_CODIGO_CNS", nullable = false, length = 50)
     private String codigoCns;
 
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void adicionaAvaliacao(Avaliacao avaliacao) {
+        if (this.avaliacoes == null) {
+            this.avaliacoes = new ArrayList<>();
+        }
+        this.avaliacoes.add(avaliacao);
+        avaliacao.setUsuario(this);
+    }
+
+    public boolean removeAvaliacao(Avaliacao avaliacao) {
+        return avaliacoes.remove(avaliacao);
+    }
+    
     public String getCodigoCns() {
         return codigoCns;
     }
 
     public void setCodigoCns(String codigoCns) {
         this.codigoCns = codigoCns;
-    }
-
-    public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
-        return avaliacoesProfissional;
-    }
-    
-    public void adicionar(AvaliacaoProfissional avaliacaoProfissional) {
-        if (this.avaliacoesProfissional == null) {
-            this.avaliacoesProfissional = new ArrayList<>();
-        }
-        this.avaliacoesProfissional.add(avaliacaoProfissional);
-        avaliacaoProfissional.setProfissionalSaude(this);
-    }
-    
-    public void remover(AvaliacaoProfissional avaliacaoProfissional) {
-        this.avaliacoesProfissional.remove(avaliacaoProfissional);
     }
     
     @Override
