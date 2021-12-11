@@ -16,9 +16,9 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
 public class Paciente extends Usuario implements Serializable {
 
-    @OneToMany(mappedBy = "paciente", fetch = javax.persistence.FetchType.LAZY,
+    @OneToMany(mappedBy = "usuario", fetch = javax.persistence.FetchType.LAZY,
             cascade = javax.persistence.CascadeType.ALL, orphanRemoval = true)
-    private List<AvaliacaoPaciente> avaliacoesPaciente;
+    private List<Avaliacao> avaliacoes;
 
     @Column(name = "TXT_NUMERO_SUS", nullable = false, length = 50)
     private String numeroSus;
@@ -31,21 +31,20 @@ public class Paciente extends Usuario implements Serializable {
         this.numeroSus = numeroSus;
     }
 
-    public List<AvaliacaoPaciente> getAvaliacoesPaciente() {
-        return avaliacoesPaciente;
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
     }
 
-    public void adicionar(AvaliacaoPaciente avaliacaoPaciente) {
-        if (this.avaliacoesPaciente == null) {
-            this.avaliacoesPaciente = new ArrayList<>();
+    public void adicionaAvaliacao(Avaliacao avaliacao) {
+        if (this.avaliacoes == null) {
+            this.avaliacoes = new ArrayList<>();
         }
-
-        this.avaliacoesPaciente.add(avaliacaoPaciente);
-        avaliacaoPaciente.setPaciente(this);
+        this.avaliacoes.add(avaliacao);
+        avaliacao.setUsuario(this);
     }
 
-    public boolean remover(AvaliacaoPaciente avaliacaoPaciente) {
-        return avaliacoesPaciente.remove(avaliacaoPaciente);
+    public boolean removeAvaliacao(Avaliacao avaliacao) {
+        return avaliacoes.remove(avaliacao);
     }
 
     @Override
