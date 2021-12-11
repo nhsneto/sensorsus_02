@@ -13,6 +13,9 @@
     <!-- Servico id = 3 -->
     <TB_SERVICO txt_nome="Limpeza da Recepção" txt_departamento="Serviços Gerais"/>
     
+    <!-- Estabelecimento id = 1 -->
+    <TB_ESTABELECIMENTO txt_nome="Hospital Oswaldo Cruz" txt_codigoCnes="111112222233333"/>
+    
     <!-- Usuario id = 1 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" int_idade="64"
             txt_login="jfs6" txt_senha="jose1234"/>
