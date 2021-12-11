@@ -28,6 +28,6 @@
     <TB_PACIENTE id_usuario="1" numeroSus="111222233334444"/>
         
         <!-- Avaliacao id = 1 -->
-    <TB_AVALIACAO txt_comentario="O atendimento no ambulatorio foi rapido, apesar da fila grande" 
+    <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
             id_usuario="1" id_estabelecimento="1"/>
 </dataset>
