@@ -37,10 +37,6 @@ public class Estabelecimento implements Serializable {
     
     @OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<AvaliacaoPaciente> avaliacoesPaciente;
-    
-    @OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-            orphanRemoval = true)
     private List<AvaliacaoProfissional> avaliacoesProfissional;
 
     @Column(name = "TXT_NOME", nullable = false, length = 255)
@@ -74,22 +70,6 @@ public class Estabelecimento implements Serializable {
             this.servicos = new ArrayList<>();
         }
         servicos.add(servico);
-    }
-    
-    public List<AvaliacaoPaciente> getAvaliacoesPaciente() {
-        return avaliacoesPaciente;
-    }
-    
-    public void adicionaAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
-        if (this.avaliacoesPaciente == null) {
-            this.avaliacoesPaciente = new ArrayList<>();
-        }
-        avaliacoesPaciente.add(avaliacaoPaciente);
-        avaliacaoPaciente.setEstabelecimento(this);
-    }
-    
-    public boolean removeAvaliacaoPaciente(AvaliacaoPaciente avaliacaoPaciente) {
-        return this.avaliacoesPaciente.remove(avaliacaoPaciente);
     }
     
     public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
