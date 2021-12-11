@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
+    <!-- Enderedo id = 1 -->
+    <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Santo Amaro" 
+            txt_logradouro="rua anorbio marques" int_numero="375"/>
     <!-- Usuario id = 1 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" int_idade="64"
             txt_login="jhsb01" txt_senha="jose1234"/>
