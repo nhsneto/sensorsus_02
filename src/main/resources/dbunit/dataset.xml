@@ -30,4 +30,10 @@
         <!-- Avaliacao id = 1 -->
     <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
             id_usuario="1" id_estabelecimento="1"/>
+        
+    <!-- Usuario id = 2 (Profissional Saude) -->
+    <TB_USUARIO disc_usuario="PS" txt_nome="Amanda" txt_email="amandasilva20@gmail.com" int_idade="42"
+            txt_login="asrf4" txt_senha="amanda1234"/>
+    
+    <TB_PROFISSIONAL_SAUDE id_usuario="2" txt_inscricao_conselho_regional="111222333444"/>
 </dataset>
