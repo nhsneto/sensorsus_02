@@ -22,8 +22,8 @@ public class ProfissionalSaude extends Usuario implements Serializable {
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Avaliacao> avaliacoes;
 
-    @Column(name = "TXT_NUMERO_CONSELHO_REGIONAL", nullable = false, length = 50)
-    private String numeroConselhoRegional;
+    @Column(name = "TXT_INSCRICAO_CONSELHO_REGIONAL", nullable = false, length = 50)
+    private String inscricaoConselhoRegional;
 
     public List<Avaliacao> getAvaliacoes() {
         return avaliacoes;
@@ -41,12 +41,12 @@ public class ProfissionalSaude extends Usuario implements Serializable {
         return avaliacoes.remove(avaliacao);
     }
     
-    public String getNumeroConselhoRegional() {
-        return numeroConselhoRegional;
+    public String getInscricaoConselhoRegional() {
+        return inscricaoConselhoRegional;
     }
 
-    public void setNumeroConselhoRegional(String numeroConselhoRegional) {
-        this.numeroConselhoRegional = numeroConselhoRegional;
+    public void setInscricaoConselhoRegional(String inscricaoConselhoRegional) {
+        this.inscricaoConselhoRegional = inscricaoConselhoRegional;
     }
     
     @Override
