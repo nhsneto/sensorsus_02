@@ -28,6 +28,10 @@ public class Estabelecimento implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "ID")
     private Endereco endereco;
+    
+    @OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private List<Avaliacao> avaliacoes;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TB_ESTABELECIMENTOS_SERVICOS", 
@@ -56,6 +60,22 @@ public class Estabelecimento implements Serializable {
         this.endereco = endereco;
         this.endereco.setEstabelecimento(this);
     }
+    
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void adicionaAvaliacao(Avaliacao avaliacao) {
+        if (this.avaliacoes == null) {
+            this.avaliacoes = new ArrayList<>();
+        }
+        this.avaliacoes.add(avaliacao);
+        avaliacao.setEstabelecimento(this);
+    }
+
+    public boolean removeAvaliacao(Avaliacao avaliacao) {
+        return avaliacoes.remove(avaliacao);
+    }
 
     public List<Servico> getServicos() {
         return servicos;
@@ -67,22 +87,6 @@ public class Estabelecimento implements Serializable {
         }
         servicos.add(servico);
     }
-    
-//    public List<AvaliacaoProfissional> getAvaliacoesProfissional() {
-//        return avaliacoesProfissional;
-//    }
-//    
-//    public void adicionaAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
-//        if (this.avaliacoesProfissional == null) {
-//            this.avaliacoesProfissional = new ArrayList<>();
-//        }
-//        avaliacoesProfissional.add(avaliacaoProfissional);
-//        avaliacaoProfissional.setEstabelecimento(this);
-//    }
-//    
-//    public boolean removeAvaliacaoProfissional(AvaliacaoProfissional avaliacaoProfissional) {
-//        return this.avaliacoesProfissional.remove(avaliacaoProfissional);
-//    }
     
     public String getNome() {
         return nome;
