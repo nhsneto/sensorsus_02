@@ -4,4 +4,7 @@
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" int_idade="64"
             txt_login="jhsb01" txt_senha="jose1234"/>
     <TB_PACIENTE id_usuario="1" numeroSus="111222233334444"/>
+        <!-- Avaliacao id = 1 -->
+    <TB_AVALIACAO txt_comentario="O atendimento no ambulatorio foi rapido, apesar da fila grande" 
+            id_usuario="1" id_estabelecimento="1"/>
 </dataset>
