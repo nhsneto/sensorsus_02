@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_USUARIO")
@@ -25,8 +28,9 @@ public abstract class Usuario implements Serializable {
     protected String nome;
     @Column(name = "TXT_EMAIL")
     protected String email;
-    @Column(name = "INT_IDADE")
-    protected Integer idade;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DT_NASCIMENTO", nullable = true)
+    protected Date dataNascimento;
     @Column(name = "TXT_LOGIN", nullable = false, length = 30)
     private String login;
     @Column(name = "TXT_SENHA", nullable = false, length = 15)
@@ -56,12 +60,12 @@ public abstract class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
     
     public String getLogin() {
@@ -88,8 +92,6 @@ public abstract class Usuario implements Serializable {
         sb.append(this.nome);
         sb.append(", ");
         sb.append(this.email);
-        sb.append(", ");
-        sb.append(this.idade);
         sb.append(", ");
         sb.append(this.senha);
 
