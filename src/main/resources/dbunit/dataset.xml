@@ -48,4 +48,8 @@
             txt_login="asrf4" txt_senha="amanda1234"/>
     
     <TB_PROFISSIONAL_SAUDE id_usuario="2" txt_inscricao_conselho_regional="111222333444"/>
+    
+    <!-- Avaliacao id = 2 -->
+    <TB_AVALIACAO txt_comentario="Grande quantidade de pacientes para poucos profissionais de saúde no setor neurológico" 
+            id_usuario="2" id_estabelecimento="2"/>
 </dataset>
