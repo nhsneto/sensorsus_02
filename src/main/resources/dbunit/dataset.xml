@@ -28,6 +28,10 @@
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="1" id_servico="1"/>
     
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="1" id_servico="2"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="2" id_servico="1"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="2" id_servico="3"/>
         
     <!-- Usuario id = 1 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" int_idade="64"
