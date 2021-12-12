@@ -4,6 +4,10 @@
     <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Santo Amaro" 
             txt_logradouro="Rua Anorbio Marques" int_numero="375"/>
     
+    <!-- Enderedo id = 2 -->
+    <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Derby" 
+            txt_logradouro="Av Agamenon Magalhães" int_numero="150"/>
+    
     <!-- Servico id = 1 -->
     <TB_SERVICO txt_nome="Recepção do Paciente" txt_departamento="Administração"/>
     
