@@ -30,7 +30,32 @@ public class EstabelecimentoTeste extends Teste {
         em.flush();
         
         assertNotNull(estabelecimento.getId());
+        assertNotNull(endereco.getId());
         assertNotNull(servico.getId());
     }
     
+    @Test
+    public void consultarEstabelecimento() {
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, 2L);
+        assertNotNull(estabelecimento);
+        assertEquals("Hospital Restauração", estabelecimento.getNome());
+        assertEquals("333332222211111", estabelecimento.getCodigoCnes());
+        
+        Endereco endereco = estabelecimento.getEndereco();
+        assertNotNull(endereco);
+        assertEquals("Pernambuco", endereco.getEstado());
+        assertEquals("Recife", endereco.getCidade());
+        assertEquals("Derby", endereco.getBairro());
+        assertEquals("Av Agamenon Magalhães", endereco.getLogradouro());
+        Integer numero = 150;
+        assertEquals(numero, endereco.getNumero());
+        
+        Servico servico1 = estabelecimento.getServicos().get(0);
+        assertEquals("Recepção do Paciente", servico1.getNome());
+        assertEquals("Administração", servico1.getDepartamento());
+        
+        Servico servico2 = estabelecimento.getServicos().get(1);
+        assertEquals("Limpeza da Recepção", servico2.getNome());
+        assertEquals("Serviços Gerais", servico2.getDepartamento());
+    }
 }
