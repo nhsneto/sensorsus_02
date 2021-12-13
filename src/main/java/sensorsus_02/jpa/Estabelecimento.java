@@ -33,7 +33,7 @@ public class Estabelecimento implements Serializable {
         orphanRemoval = true)
     private List<Avaliacao> avaliacoes;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "TB_ESTABELECIMENTOS_SERVICOS", 
             joinColumns = { @JoinColumn(name = "ID_ESTABELECIMENTO") }, 
             inverseJoinColumns = { @JoinColumn(name = "ID_SERVICO") })
