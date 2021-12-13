@@ -1,5 +1,9 @@
 package sensorsus_02.jpa;
 
+import java.util.HashMap;
+import java.util.Map;
+import javax.persistence.CacheRetrieveMode;
+import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -57,5 +61,34 @@ public class EstabelecimentoTeste extends Teste {
         Servico servico2 = estabelecimento.getServicos().get(1);
         assertEquals("Limpeza da Recepção", servico2.getNome());
         assertEquals("Serviços Gerais", servico2.getDepartamento());
+    }
+    
+//    @Test
+//    public void atualizarEstabelecimento() {        
+//        String novoNome = "Hospital da Restauração Governador Paulo Guerra";
+//        Long id = 2L;
+//        Estabelecimento estabelecimento = em.find(Estabelecimento.class, id);
+//        estabelecimento.setNome(novoNome);
+//        em.flush();
+//        String jpql = "SELECT e FROM Estabelecimento WHERE e.id = ?2";
+//        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
+//        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+//        query.setParameter(1, id);
+//        estabelecimento = query.getSingleResult();
+//        assertEquals(novoNome, estabelecimento.getNome());
+//    }
+    
+    @Test
+    public void atualizarEstabelecimentoMerge() {
+        String novoNome = "Hospital da Restauração Governador Paulo Guerra";
+        Long id = 2L;
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, id);
+        estabelecimento.setNome(novoNome);
+        em.clear();
+        em.merge(estabelecimento);
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        estabelecimento = em.find(Estabelecimento.class, id, properties);
+        assertEquals("Hospital da Restauração Governador Paulo Guerra", estabelecimento.getNome());
     }
 }
