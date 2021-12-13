@@ -63,20 +63,20 @@ public class EstabelecimentoTeste extends Teste {
         assertEquals("Serviços Gerais", servico2.getDepartamento());
     }
     
-//    @Test
-//    public void atualizarEstabelecimento() {        
-//        String novoNome = "Hospital da Restauração Governador Paulo Guerra";
-//        Long id = 2L;
-//        Estabelecimento estabelecimento = em.find(Estabelecimento.class, id);
-//        estabelecimento.setNome(novoNome);
-//        em.flush();
-//        String jpql = "SELECT e FROM Estabelecimento WHERE e.id = ?2";
-//        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
-//        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-//        query.setParameter(1, id);
-//        estabelecimento = query.getSingleResult();
-//        assertEquals(novoNome, estabelecimento.getNome());
-//    }
+    @Test
+    public void atualizarEstabelecimento() {
+        String novoNome = "Hospital da Restauração Governador Paulo Guerra";
+        Long id = 2L;
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, id);
+        estabelecimento.setNome(novoNome);
+        em.flush();
+        String jpql = "SELECT e FROM Estabelecimento e WHERE e.id = ?1";
+        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
+        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        estabelecimento = query.getSingleResult();
+        assertEquals(novoNome, estabelecimento.getNome());
+    }
     
     @Test
     public void atualizarEstabelecimentoMerge() {
