@@ -19,11 +19,11 @@
     
     <!-- Estabelecimento id = 1 -->
     <TB_ESTABELECIMENTO id_endereco="1" txt_nome="Hospital Oswaldo Cruz" 
-            txt_codigoCnes="111112222233333"/>
+            txt_codigo_cnes="111112222233333"/>
     
     <!-- Estabelecimento id = 2 -->
     <TB_ESTABELECIMENTO id_endereco="2" txt_nome="Hospital Restauração" 
-            txt_codigoCnes="333332222211111"/>
+            txt_codigo_cnes="333332222211111"/>
 
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="1" id_servico="1"/>
     
@@ -37,7 +37,7 @@
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" dt_nascimento = "1989-05-17"
             txt_login="jfs6" txt_senha="jose1234"/>
     
-    <TB_PACIENTE id_usuario="1" txt_numeroSus="111222233334444"/>
+    <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
         
         <!-- Avaliacao id = 1 -->
     <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
