@@ -91,4 +91,27 @@ public class EstabelecimentoTeste extends Teste {
         estabelecimento = em.find(Estabelecimento.class, id, properties);
         assertEquals("Hospital da Restauração Governador Paulo Guerra", estabelecimento.getNome());
     }
+    
+    @Test
+    public void removerEstabelecimento() {
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, 1L);
+        em.remove(estabelecimento);
+        Estabelecimento est = em.find(Estabelecimento.class, 1L);
+        assertNull(est);
+        Endereco endereco = em.find(Endereco.class, 1L);
+        assertNull(endereco);
+        
+        Servico servico1 = em.find(Servico.class, 1L);
+        assertNotNull(servico1);
+        Servico servico2 = em.find(Servico.class, 2L);
+        assertNotNull(servico2);
+        
+        Avaliacao avaliacao = em.find(Avaliacao.class, 1L);
+        assertNull(avaliacao);
+        
+        Usuario usuario1 = em.find(Usuario.class, 1L);
+        assertNotNull(usuario1);
+        Usuario usuario2 = em.find(Usuario.class, 2L);
+        assertNotNull(usuario2);
+    }
 }
