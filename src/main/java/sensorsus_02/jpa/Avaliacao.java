@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Avaliacao implements Serializable {
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
     private Usuario usuario;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ID_ESTABELECIMENTO", referencedColumnName = "ID")
     private Estabelecimento estabelecimento;
     
