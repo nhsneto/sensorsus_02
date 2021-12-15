@@ -76,7 +76,7 @@ public class AvaliacaoTeste extends Teste {
         em.flush();
         String jpql = "SELECT a FROM Avaliacao a WHERE a.id = ?1";
         TypedQuery<Avaliacao> query = em.createQuery(jpql, Avaliacao.class);
-        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         avaliacao = query.getSingleResult();
         assertEquals(novoComentario, avaliacao.getComentario());
@@ -92,7 +92,7 @@ public class AvaliacaoTeste extends Teste {
         em.clear();
         em.merge(avaliacao);
         Map<String, Object> properties = new HashMap<>();
-        properties.put("javax.persistense.retrieveMode", CacheRetrieveMode.BYPASS);
+        properties.put("javax.persistence.retrieveMode", CacheRetrieveMode.BYPASS);
         avaliacao = em.find(Avaliacao.class, id, properties);
         assertEquals(novoComentario, avaliacao.getComentario());
     }
