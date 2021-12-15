@@ -1,6 +1,8 @@
 package sensorsus_02.jpa;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.CacheRetrieveMode;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
@@ -77,6 +79,21 @@ public class AvaliacaoTeste extends Teste {
         query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         avaliacao = query.getSingleResult();
+        assertEquals(novoComentario, avaliacao.getComentario());
+    }
+    
+    @Test
+    public void atualizarAvaliacaoMerge() {
+        String novoComentario = "Faz duas semanas que está faltando álcool em gel na entrada "
+                + "principal do setor de traumatologia";
+        Long id = 1L;
+        Avaliacao avaliacao = em.find(Avaliacao.class, id);
+        avaliacao.setComentario(novoComentario);
+        em.clear();
+        em.merge(avaliacao);
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistense.retrieveMode", CacheRetrieveMode.BYPASS);
+        avaliacao = em.find(Avaliacao.class, id, properties);
         assertEquals(novoComentario, avaliacao.getComentario());
     }
 }
