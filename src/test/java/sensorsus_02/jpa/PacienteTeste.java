@@ -47,11 +47,10 @@ public class PacienteTeste extends Teste {
 
     @Test
     public void consultarPaciente() {
-        Paciente paciente = em.find(Paciente.class, 2L);
+        Paciente paciente = em.find(Paciente.class, 1L);
         assertNotNull(paciente);
         assertEquals("Jose", paciente.getNome());
         assertEquals("jfs6", paciente.getLogin());
-        assertEquals("josefreitas49@gmail.com", paciente.getEmail());
         assertEquals("josefreitas49@gmail.com", paciente.getEmail());
         assertEquals("jose1234", paciente.getSenha());
         assertEquals("111222233334444", paciente.getNumeroSus());
