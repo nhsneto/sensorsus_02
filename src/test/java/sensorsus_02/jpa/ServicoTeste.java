@@ -1,5 +1,7 @@
 package sensorsus_02.jpa;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.CacheRetrieveMode;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
@@ -39,6 +41,21 @@ public class ServicoTeste extends Teste {
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         servico = query.getSingleResult();
+        assertEquals(novoNome, servico.getNome());
+    }
+    
+    @Test
+    public void atualizarServicoMerge() {
+        String novoNome = "Limpeza da Sala de Atendimento ao Paciente";
+        Long id = 3L;
+        Servico servico = em.find(Servico.class, id);
+        servico.setNome(novoNome);
+        em.clear();
+        em.merge(servico);
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        servico = em.find(Servico.class, id, properties);
+        System.out.println(servico.getNome());
         assertEquals(novoNome, servico.getNome());
     }
 }
