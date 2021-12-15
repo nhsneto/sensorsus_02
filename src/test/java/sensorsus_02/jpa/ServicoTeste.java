@@ -21,15 +21,15 @@ public class ServicoTeste extends Teste {
     
     @Test
     public void consultarServico() {
-        Servico servico = em.find(Servico.class, 3L);
+        Servico servico = em.find(Servico.class, 2L);
         assertNotNull(servico);
-        assertEquals("Limpeza da Recepção", servico.getNome());
-        assertEquals("Serviços Gerais", servico.getDepartamento());
+        assertEquals("Atendimento Inicial Ambulatório", servico.getNome());
+        assertEquals("Enfermagem", servico.getDepartamento());
     }
     
     @Test
     public void atualizarServico() {
-        String novoNome = "Limpeza da Sala de Antendimento ao Paciente";
+        String novoNome = "Limpeza da Sala de Atendimento ao Paciente";
         Long id = 3L;
         Servico servico = em.find(Servico.class, id);
         servico.setNome(novoNome);
