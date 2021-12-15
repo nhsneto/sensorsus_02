@@ -96,4 +96,18 @@ public class AvaliacaoTeste extends Teste {
         avaliacao = em.find(Avaliacao.class, id, properties);
         assertEquals(novoComentario, avaliacao.getComentario());
     }
+    
+    @Test
+    public void removerAvaliacao() {
+        Avaliacao avaliacao = em.find(Avaliacao.class, 2L);
+        em.remove(avaliacao);
+        avaliacao = em.find(Avaliacao.class, 2L);
+        assertNull(avaliacao);
+        
+        Usuario usuario = em.find(Usuario.class, 2L);
+        assertNotNull(usuario);
+        
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, 2L);
+        assertNotNull(estabelecimento);
+    }
 }
