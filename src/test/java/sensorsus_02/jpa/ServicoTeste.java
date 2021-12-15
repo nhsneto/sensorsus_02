@@ -65,11 +65,9 @@ public class ServicoTeste extends Teste {
         
         Estabelecimento estabelecimento1 = em.find(Estabelecimento.class, 1L);
         estabelecimento1.removeServico(servico);
-        assertEquals(estabelecimento1.getServicos().size(), 1);
         
         Estabelecimento estabelecimento2 = em.find(Estabelecimento.class, 2L);
         estabelecimento2.removeServico(servico);
-        assertEquals(estabelecimento2.getServicos().size(), 1);
         
         em.remove(servico);
         servico = em.find(Servico.class, 1L);
