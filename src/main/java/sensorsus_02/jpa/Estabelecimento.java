@@ -88,6 +88,10 @@ public class Estabelecimento implements Serializable {
         servicos.add(servico);
     }
     
+    public boolean removeServico(Servico servico) {
+        return servicos.remove(servico);
+    }
+    
     public String getNome() {
         return nome;
     }
