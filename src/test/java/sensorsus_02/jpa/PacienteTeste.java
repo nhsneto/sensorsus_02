@@ -5,9 +5,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
+public class PacienteTeste extends Teste {
 
-public class PacienteTeste extends Teste{
-    
     @Test
     public void persistirPaciente() {
         Paciente paciente = new Paciente();
@@ -19,14 +18,14 @@ public class PacienteTeste extends Teste{
         Calendar c = Calendar.getInstance();
         c.set(1984, Calendar.SEPTEMBER, 24, 0, 0, 0);
         paciente.setDataNascimento(c.getTime());
-        
+
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setComentario("Teste avaliação");
-        
+
         Estabelecimento estabelecimento = new Estabelecimento();
         estabelecimento.setCodigoCnes("13456789");
         estabelecimento.setNome("UPA Teste");
-        
+
         Endereco endereco = new Endereco();
         endereco.setLogradouro("Logradouro teste");
         endereco.setNumero(01);
@@ -34,15 +33,14 @@ public class PacienteTeste extends Teste{
         endereco.setBairro("Bairro teste");
         endereco.setCidade("Cidade teste");
         endereco.setEstado("Estado teste");
-        
+
         paciente.adicionaAvaliacao(avaliacao);
         avaliacao.setEstabelecimento(estabelecimento);
         estabelecimento.setEndereco(endereco);
 
-        
         em.persist(paciente);
         em.flush();
-        
+
         assertNotNull(paciente.getId());
         assertNotNull(avaliacao.getId());
     }
@@ -60,6 +58,5 @@ public class PacienteTeste extends Teste{
         Calendar c = Calendar.getInstance();
         c.set(1989, Calendar.MAY, 17, 0, 0, 0);
         assertEquals(c.getTime().toString(), paciente.getDataNascimento().toString());
-       
     }
 }
