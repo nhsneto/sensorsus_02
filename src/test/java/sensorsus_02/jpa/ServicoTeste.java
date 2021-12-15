@@ -16,4 +16,12 @@ public class ServicoTeste extends Teste {
         
         assertNotNull(servico.getId());
     }
+    
+    @Test
+    public void consultarServico() {
+        Servico servico = em.find(Servico.class, 3L);
+        assertNotNull(servico);
+        assertEquals("Limpeza da Recepção", servico.getNome());
+        assertEquals("Serviços Gerais", servico.getDepartamento());
+    }
 }
