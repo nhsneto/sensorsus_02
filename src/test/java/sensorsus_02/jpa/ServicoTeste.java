@@ -1,5 +1,7 @@
 package sensorsus_02.jpa;
 
+import javax.persistence.CacheRetrieveMode;
+import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -23,5 +25,20 @@ public class ServicoTeste extends Teste {
         assertNotNull(servico);
         assertEquals("Limpeza da Recepção", servico.getNome());
         assertEquals("Serviços Gerais", servico.getDepartamento());
+    }
+    
+    @Test
+    public void atualizarServico() {
+        String novoNome = "Limpeza da Sala de Antendimento ao Paciente";
+        Long id = 3L;
+        Servico servico = em.find(Servico.class, id);
+        servico.setNome(novoNome);
+        em.flush();
+        String jpql = "SELECT s FROM Servico s WHERE s.id = ?1";
+        TypedQuery<Servico> query = em.createQuery(jpql, Servico.class);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        servico = query.getSingleResult();
+        assertEquals(novoNome, servico.getNome());
     }
 }
