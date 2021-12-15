@@ -72,7 +72,7 @@ public class EstabelecimentoTeste extends Teste {
         em.flush();
         String jpql = "SELECT e FROM Estabelecimento e WHERE e.id = ?1";
         TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
-        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         estabelecimento = query.getSingleResult();
         assertEquals(novoNome, estabelecimento.getNome());
@@ -87,7 +87,7 @@ public class EstabelecimentoTeste extends Teste {
         em.clear();
         em.merge(estabelecimento);
         Map<String, Object> properties = new HashMap<>();
-        properties.put("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         estabelecimento = em.find(Estabelecimento.class, id, properties);
         assertEquals("Hospital da Restauração Governador Paulo Guerra", estabelecimento.getNome());
     }
