@@ -1,6 +1,8 @@
 package sensorsus_02.jpa;
 
 import java.util.Calendar;
+import javax.persistence.CacheRetrieveMode;
+import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -60,5 +62,21 @@ public class AvaliacaoTeste extends Teste {
         assertNotNull(estabelecimento);
         assertEquals("Hospital Oswaldo Cruz", estabelecimento.getNome());
         assertEquals("111112222233333", estabelecimento.getCodigoCnes());
+    }
+    
+    @Test
+    public void atualizarAvaliacao() {
+        String novoComentario = "Faz duas semanas que está faltando álcool em gel na entrada "
+                + "principal do setor de traumatologia";
+        Long id = 1L;
+        Avaliacao avaliacao = em.find(Avaliacao.class, id);
+        avaliacao.setComentario(novoComentario);
+        em.flush();
+        String jpql = "SELECT a FROM Avaliacao a WHERE a.id = ?1";
+        TypedQuery<Avaliacao> query = em.createQuery(jpql, Avaliacao.class);
+        query.setHint("javax.persistense.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        avaliacao = query.getSingleResult();
+        assertEquals(novoComentario, avaliacao.getComentario());
     }
 }
