@@ -98,6 +98,7 @@ public class EstabelecimentoTeste extends Teste {
         em.remove(estabelecimento);
         estabelecimento = em.find(Estabelecimento.class, 1L);
         assertNull(estabelecimento);
+        
         Endereco endereco = em.find(Endereco.class, 1L);
         assertNull(endereco);
         
