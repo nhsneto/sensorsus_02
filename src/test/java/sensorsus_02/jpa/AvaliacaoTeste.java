@@ -38,4 +38,27 @@ public class AvaliacaoTeste extends Teste {
         assertNotNull(paciente.getId());
         assertNotNull(estabelecimento.getId());
     }
+    
+    @Test
+    public void consultarAvaliacao() {
+        Avaliacao avaliacao = em.find(Avaliacao.class, 1L);
+        assertNotNull(avaliacao);
+        assertEquals("O atendimento na recepção foi rápido, apesar da fila grande", 
+                avaliacao.getComentario());
+        
+        Usuario usuario = avaliacao.getUsuario();
+        assertNotNull(usuario);
+        assertEquals("Jose", usuario.getNome());
+        assertEquals("josefreitas49@gmail.com", usuario.getEmail());
+        assertEquals("jfs6", usuario.getLogin());
+        assertEquals("jose1234", usuario.getSenha());
+        Calendar c = Calendar.getInstance();
+        c.set(1989, Calendar.MAY, 17, 0, 0, 0);
+        assertEquals(c.getTime().toString(), usuario.getDataNascimento().toString());
+        
+        Estabelecimento estabelecimento = avaliacao.getEstabelecimento();
+        assertNotNull(estabelecimento);
+        assertEquals("Hospital Oswaldo Cruz", estabelecimento.getNome());
+        assertEquals("111112222233333", estabelecimento.getCodigoCnes());
+    }
 }
