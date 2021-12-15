@@ -12,7 +12,7 @@
     <TB_SERVICO txt_nome="Recepção do Paciente" txt_departamento="Administração"/>
     
     <!-- Servico id = 2 -->
-    <TB_SERVICO txt_nome="Atendimendo Inicial Ambulatório" txt_departamento="Enfermagem"/>
+    <TB_SERVICO txt_nome="Atendimento Inicial Ambulatório" txt_departamento="Enfermagem"/>
     
     <!-- Servico id = 3 -->
     <TB_SERVICO txt_nome="Limpeza da Recepção" txt_departamento="Serviços Gerais"/>
