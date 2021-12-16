@@ -81,4 +81,15 @@ public class EnderecoTeste extends Teste {
         assertEquals(novoNumero, endereco.getNumero());
         assertEquals(novoLogradouro, endereco.getLogradouro());
     }
+    
+    @Test
+    public void removerEndereco() {
+        Endereco endereco = em.find(Endereco.class, 1L);
+        em.remove(endereco);
+        endereco = em.find(Endereco.class, 1L);
+        assertNull(endereco);
+        
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, 1L);
+        assertNull(estabelecimento);
+    }
 }
