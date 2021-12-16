@@ -1,5 +1,7 @@
 package sensorsus_02.jpa;
 
+import javax.persistence.CacheRetrieveMode;
+import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -41,5 +43,23 @@ public class EnderecoTeste extends Teste {
         assertNotNull(estabelecimento);
         assertEquals("Hospital Restauração", estabelecimento.getNome());
         assertEquals("333332222211111", estabelecimento.getCodigoCnes());
+    }
+    
+    @Test
+    public void atualizarEndereco() {
+        Integer novoNumero = 377;
+        String novoLogradouro = "Rua Arnóbio Marquês";
+        Long id = 1L;
+        Endereco endereco = em.find(Endereco.class, id);
+        endereco.setNumero(novoNumero);
+        endereco.setLogradouro(novoLogradouro);
+        em.flush();
+        String jpql = "SELECT e FROM Endereco e WHERE e.id = ?1";
+        TypedQuery<Endereco> query = em.createQuery(jpql, Endereco.class);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        endereco = query.getSingleResult();
+        assertEquals(novoNumero, endereco.getNumero());
+        assertEquals(novoLogradouro, endereco.getLogradouro());
     }
 }
