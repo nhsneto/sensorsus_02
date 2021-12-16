@@ -68,7 +68,7 @@ public class EnderecoTeste extends Teste {
     @Test
     public void atualizarEnderecoMerge() {
         Integer novoNumero = 378;
-        String novoLogradouro = "Rua Arnóbio Marquês S.";
+        String novoLogradouro = "Rua Arnóbio Marquês [merge]";
         Long id = 1L;
         Endereco endereco = em.find(Endereco.class, id);
         endereco.setNumero(novoNumero);
