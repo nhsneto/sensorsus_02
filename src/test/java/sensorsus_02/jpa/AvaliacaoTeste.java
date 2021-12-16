@@ -85,7 +85,7 @@ public class AvaliacaoTeste extends Teste {
     @Test
     public void atualizarAvaliacaoMerge() {
         String novoComentario = "Faz duas semanas que está faltando álcool em gel na entrada "
-                + "principal do setor de traumatologia";
+                + "principal do setor de traumatologia [merge]";
         Long id = 1L;
         Avaliacao avaliacao = em.find(Avaliacao.class, id);
         avaliacao.setComentario(novoComentario);
