@@ -80,7 +80,7 @@ public class EstabelecimentoTeste extends Teste {
     
     @Test
     public void atualizarEstabelecimentoMerge() {
-        String novoNome = "Hospital da Restauração Governador Paulo Guerra";
+        String novoNome = "Hospital da Restauração Governador Paulo Guerra [merge]";
         Long id = 2L;
         Estabelecimento estabelecimento = em.find(Estabelecimento.class, id);
         estabelecimento.setNome(novoNome);
@@ -89,7 +89,7 @@ public class EstabelecimentoTeste extends Teste {
         Map<String, Object> properties = new HashMap<>();
         properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         estabelecimento = em.find(Estabelecimento.class, id, properties);
-        assertEquals("Hospital da Restauração Governador Paulo Guerra", estabelecimento.getNome());
+        assertEquals(novoNome, estabelecimento.getNome());
     }
     
     @Test
