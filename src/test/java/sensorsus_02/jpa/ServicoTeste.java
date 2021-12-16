@@ -46,7 +46,7 @@ public class ServicoTeste extends Teste {
     
     @Test
     public void atualizarServicoMerge() {
-        String novoNome = "Limpeza da Sala de Atendimento ao Paciente";
+        String novoNome = "Limpeza da Sala de Atendimento ao Paciente [merge]";
         Long id = 3L;
         Servico servico = em.find(Servico.class, id);
         servico.setNome(novoNome);
