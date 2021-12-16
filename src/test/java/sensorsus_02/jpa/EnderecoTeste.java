@@ -38,6 +38,7 @@ public class EnderecoTeste extends Teste {
         assertEquals(numero, endereco.getNumero());
         
         Estabelecimento estabelecimento = endereco.getEstabelecimento();
+        assertNotNull(estabelecimento);
         assertEquals("Hospital Restauração", estabelecimento.getNome());
         assertEquals("333332222211111", estabelecimento.getCodigoCnes());
     }
