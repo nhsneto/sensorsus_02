@@ -1,5 +1,7 @@
 package sensorsus_02.jpa;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.CacheRetrieveMode;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
@@ -59,6 +61,23 @@ public class EnderecoTeste extends Teste {
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         endereco = query.getSingleResult();
+        assertEquals(novoNumero, endereco.getNumero());
+        assertEquals(novoLogradouro, endereco.getLogradouro());
+    }
+    
+    @Test
+    public void atualizarEnderecoMerge() {
+        Integer novoNumero = 378;
+        String novoLogradouro = "Rua Arnóbio Marquês S.";
+        Long id = 1L;
+        Endereco endereco = em.find(Endereco.class, id);
+        endereco.setNumero(novoNumero);
+        endereco.setLogradouro(novoLogradouro);
+        em.clear();
+        em.merge(endereco);
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        endereco = em.find(Endereco.class, id, properties);
         assertEquals(novoNumero, endereco.getNumero());
         assertEquals(novoLogradouro, endereco.getLogradouro());
     }
