@@ -25,4 +25,20 @@ public class EnderecoTeste extends Teste {
         assertNotNull(endereco.getId());
         assertNotNull(estabelecimento.getId());
     }
+    
+    @Test
+    public void consultarEndereco() {
+        Endereco endereco = em.find(Endereco.class, 2L);
+        assertNotNull(endereco);
+        assertEquals("Pernambuco", endereco.getEstado());
+        assertEquals("Recife", endereco.getCidade());
+        assertEquals("Derby", endereco.getBairro());
+        assertEquals("Av Agamenon Magalhães", endereco.getLogradouro());
+        Integer numero = 150;
+        assertEquals(numero, endereco.getNumero());
+        
+        Estabelecimento estabelecimento = endereco.getEstabelecimento();
+        assertEquals("Hospital Restauração", estabelecimento.getNome());
+        assertEquals("333332222211111", estabelecimento.getCodigoCnes());
+    }
 }
