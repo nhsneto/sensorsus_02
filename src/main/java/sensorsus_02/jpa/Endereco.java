@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +19,7 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToOne(mappedBy = "endereco", optional = false, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "endereco", optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Estabelecimento estabelecimento;
 
     @Column(name = "TXT_ESTADO", nullable = false, length = 50)
