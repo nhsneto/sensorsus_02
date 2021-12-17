@@ -90,7 +90,7 @@ public class ProfissionalSaudeTeste extends Teste {
         em.flush();
         
         String jpql = "SELECT ps FROM ProfissionalSaude ps WHERE ps.id = ?1";
-        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
+        TypedQuery<ProfissionalSaude> query = em.createQuery(jpql, ProfissionalSaude.class);
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         
