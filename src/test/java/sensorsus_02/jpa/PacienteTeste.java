@@ -62,37 +62,43 @@ public class PacienteTeste extends Teste {
         Calendar c = Calendar.getInstance();
         c.set(1989, Calendar.MAY, 17, 0, 0, 0);
         assertEquals(c.getTime().toString(), paciente.getDataNascimento().toString());
-        
+
         assertEquals(1, paciente.getAvaliacoes().size());
-        
+
         paciente.getAvaliacoes().forEach(avaliacao -> {
             assertThat(avaliacao.getComentario().toString(),
                     CoreMatchers.anyOf(
                             startsWith("O atendimento na recepção foi rápido, apesar da fila grande")
                     ));
-        });        
+        });
     }
-    
+
     @Test
-    public void atualizarPaciente(){
-        String novoNome = "João";
+    public void atualizarPaciente() {
         Long id = 1L;
-        
+
         Paciente paciente = em.find(Paciente.class, id);
-        paciente.setNome(novoNome);
-        
+        paciente.setNome("João");
+        paciente.setEmail("joão@mail.com");
+        paciente.setLogin("jpr7");
+        paciente.setSenha("joao1234");
+
         em.flush();
+        assertEquals("João", paciente.getNome());
+        assertEquals("joão@mail.com", paciente.getEmail());
+        assertEquals("jpr7", paciente.getLogin());
+        assertEquals("joao1234", paciente.getSenha());
     }
-    
+
     @Test
-    public void removerPaciente(){
+    public void removerPaciente() {
         Paciente paciente = em.find(Paciente.class, 1L);
         em.remove(paciente);
         paciente = em.find(Paciente.class, 1L);
         assertNull(paciente);
-        
+
         Avaliacao avaliacao = em.find(Avaliacao.class, 1L);
         assertNull(avaliacao);
-        
+
     }
 }
