@@ -73,16 +73,23 @@ public class ProfissionalSaudeTeste extends Teste {
         });
     }
 
-//    @Test
-//    public void atualizarProfissionalSaude() {
-//        String novoNome = "João";
-//        Long id = 1L;
-//
-//        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, id);
-//        profissionalSaude.setNome(novoNome);
-//
-//        em.flush();
-//    }
+    @Test
+    public void atualizarProfissionalSaude() {
+        Long id = 2L;
+
+        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, id);
+        profissionalSaude.setNome("João");
+        profissionalSaude.setEmail("joão@mail.com");
+        profissionalSaude.setLogin("jpr7");
+        profissionalSaude.setSenha("joao1234");
+
+        em.flush();
+        assertEquals("João", profissionalSaude.getNome());
+        assertEquals("joão@mail.com", profissionalSaude.getEmail());
+        assertEquals("jpr7", profissionalSaude.getLogin());
+        assertEquals("joao1234", profissionalSaude.getSenha());
+
+    }
 
     @Test
     public void removerProfissionalSaude() {
