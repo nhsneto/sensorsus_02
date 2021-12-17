@@ -1,8 +1,12 @@
 package sensorsus_02.jpa;
 
 import java.util.Calendar;
+import org.hamcrest.CoreMatchers;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class PacienteTeste extends Teste {
@@ -43,6 +47,7 @@ public class PacienteTeste extends Teste {
 
         assertNotNull(paciente.getId());
         assertNotNull(avaliacao.getId());
+        assertNotNull(estabelecimento.getId());
     }
 
     @Test
@@ -57,5 +62,37 @@ public class PacienteTeste extends Teste {
         Calendar c = Calendar.getInstance();
         c.set(1989, Calendar.MAY, 17, 0, 0, 0);
         assertEquals(c.getTime().toString(), paciente.getDataNascimento().toString());
+        
+        assertEquals(1, paciente.getAvaliacoes().size());
+        
+        paciente.getAvaliacoes().forEach(avaliacao -> {
+            assertThat(avaliacao.getComentario().toString(),
+                    CoreMatchers.anyOf(
+                            startsWith("O atendimento na recepção foi rápido, apesar da fila grande")
+                    ));
+        });        
+    }
+    
+    @Test
+    public void atualizarPaciente(){
+        String novoNome = "João";
+        Long id = 1L;
+        
+        Paciente paciente = em.find(Paciente.class, id);
+        paciente.setNome(novoNome);
+        
+        em.flush();
+    }
+    
+    @Test
+    public void removerPaciente(){
+        Paciente paciente = em.find(Paciente.class, 1L);
+        em.remove(paciente);
+        paciente = em.find(Paciente.class, 1L);
+        assertNull(paciente);
+        
+        Avaliacao avaliacao = em.find(Avaliacao.class, 1L);
+        assertNull(avaliacao);
+        
     }
 }
