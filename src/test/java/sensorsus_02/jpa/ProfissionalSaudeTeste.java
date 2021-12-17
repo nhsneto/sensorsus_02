@@ -1,7 +1,10 @@
 package sensorsus_02.jpa;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.CacheRetrieveMode;
+import javax.persistence.TypedQuery;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
@@ -85,6 +88,12 @@ public class ProfissionalSaudeTeste extends Teste {
         profissionalSaude.setSenha("joao1234");
 
         em.flush();
+        
+        String jpql = "SELECT ps FROM ProfissionalSaude ps WHERE ps.id = ?1";
+        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        
         assertEquals("João", profissionalSaude.getNome());
         assertEquals("joão@mail.com", profissionalSaude.getEmail());
         assertEquals("jpr7", profissionalSaude.getLogin());
@@ -106,6 +115,9 @@ public class ProfissionalSaudeTeste extends Teste {
         em.clear();
         em.merge(profissionalSaude);
         
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        profissionalSaude = em.find(ProfissionalSaude.class, id, properties);
         profissionalSaude = em.find(ProfissionalSaude.class, id);
         assertEquals("Laura", profissionalSaude.getNome());
         assertEquals("laura@mail.com", profissionalSaude.getEmail());
