@@ -90,20 +90,25 @@ public class PacienteTeste extends Teste {
         assertEquals("joao1234", paciente.getSenha());
     }
     
-//    @Test
-//    public void atualizarPacienteMerge(){
-//        Long id = 2L;
-//        Paciente paciente = em.find(Paciente.class, id);
-//        paciente.setNome("Laura");
-//        paciente.setEmail("laura@mail.com");
-//        paciente.setLogin("lab12");
-//        paciente.setSenha("laura1234");
-//        
-//        em.clear();
-//        em.merge(paciente);
-//        paciente = em.find(Paciente.class, id);
-//        assertEquals("Laura", paciente.getNome());
-//    }
+    @Test
+    public void atualizarPacienteMerge(){
+        Long id = 1L;
+        Paciente paciente = em.find(Paciente.class, id);
+        assertNotNull(paciente);
+        paciente.setNome("Laura");
+        paciente.setEmail("laura@mail.com");
+        paciente.setLogin("lab12");
+        paciente.setSenha("laura1234");
+        
+        em.clear();
+        em.merge(paciente);
+        
+        paciente = em.find(Paciente.class, id);
+        assertEquals("Laura", paciente.getNome());
+        assertEquals("laura@mail.com", paciente.getEmail());
+        assertEquals("lab12", paciente.getLogin());
+        assertEquals("laura1234", paciente.getSenha());
+    }
     
     @Test
     public void removerPaciente() {
