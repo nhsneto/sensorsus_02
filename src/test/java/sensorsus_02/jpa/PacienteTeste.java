@@ -90,7 +90,7 @@ public class PacienteTeste extends Teste {
         em.flush();
         
         String jpql = "SELECT pa FROM Paciente pa WHERE pa.id = ?1";
-        TypedQuery<Estabelecimento> query = em.createQuery(jpql, Estabelecimento.class);
+        TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class);
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         query.setParameter(1, id);
         
@@ -101,7 +101,7 @@ public class PacienteTeste extends Teste {
     }
     
     @Test
-    public void atualizarPacienteMerge(){
+    public void atualizarPacienteMerge() {
         Long id = 1L;
         Paciente paciente = em.find(Paciente.class, id);
         assertNotNull(paciente);
@@ -131,6 +131,5 @@ public class PacienteTeste extends Teste {
 
         Avaliacao avaliacao = em.find(Avaliacao.class, 1L);
         assertNull(avaliacao);
-
     }
 }
