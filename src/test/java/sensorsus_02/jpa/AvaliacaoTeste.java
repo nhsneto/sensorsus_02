@@ -74,10 +74,17 @@ public class AvaliacaoTeste extends Teste {
         Avaliacao avaliacao = em.find(Avaliacao.class, id);
         avaliacao.setComentario(novoComentario);
         em.flush();
-        String jpql = "SELECT a FROM Avaliacao a WHERE a.id = ?1";
-        TypedQuery<Avaliacao> query = em.createQuery(jpql, Avaliacao.class);
+        String jpql = "SELECT a FROM Avaliacao a WHERE a.id = :id";       
+        
+        TypedQuery<Avaliacao> query = em.createQuery(jpql, Avaliacao.class);   
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-        query.setParameter(1, id);
+        
+        if(id!=null){
+            query.setParameter("id", id);
+        }else{
+             query.setParameter("id", "");
+        }
+        
         avaliacao = query.getSingleResult();
         assertEquals(novoComentario, avaliacao.getComentario());
     }
