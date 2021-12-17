@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.util.Calendar;
+import javax.persistence.CacheRetrieveMode;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
@@ -90,6 +91,22 @@ public class ProfissionalSaudeTeste extends Teste {
         assertEquals("joao1234", profissionalSaude.getSenha());
 
     }
+    
+//    @Test
+//    public void atualizarProfissionalSaudeMerge(){
+//        Long id = 2L;
+//        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, id);
+//        profissionalSaude.setNome("Laura");
+//        profissionalSaude.setEmail("laura@mail.com");
+//        profissionalSaude.setLogin("lab12");
+//        profissionalSaude.setSenha("laura1234");
+//        
+//        em.clear();
+//        em.merge(profissionalSaude);
+//        profissionalSaude = em.find(ProfissionalSaude.class, id);
+//        assertEquals("Laura", profissionalSaude.getNome());
+//
+//    }
 
     @Test
     public void removerProfissionalSaude() {
