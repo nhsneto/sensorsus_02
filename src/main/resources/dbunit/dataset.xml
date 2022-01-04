@@ -32,6 +32,14 @@
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="2" id_servico="1"/>
     
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="2" id_servico="3"/>
+    
+    <TB_TELEFONE id_estabelecimento="1" txt_telefone="8199999999"/>
+    
+    <TB_TELEFONE id_estabelecimento="1" txt_telefone="8188888888"/>
+    
+    <TB_TELEFONE id_estabelecimento="2" txt_telefone="8133333333"/>
+    
+    <TB_TELEFONE id_estabelecimento="2" txt_telefone="8144444444"/>
         
     <!-- Usuario id = 1 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" dt_nascimento = "1989-05-17"
