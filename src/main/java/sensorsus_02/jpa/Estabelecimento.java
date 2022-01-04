@@ -2,9 +2,13 @@ package sensorsus_02.jpa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,6 +42,12 @@ public class Estabelecimento implements Serializable {
             joinColumns = { @JoinColumn(name = "ID_ESTABELECIMENTO") }, 
             inverseJoinColumns = { @JoinColumn(name = "ID_SERVICO") })
     private List<Servico> servicos;
+    
+    @ElementCollection
+    @CollectionTable(name = "TB_TELEFONE", joinColumns = @JoinColumn(name = "ID_ESTABELECIMENTO",
+            nullable = false))
+    @Column(name = "TXT_TELEFONE", nullable = true, length = 20)
+    private Collection<String> telefones;
     
     @Column(name = "TXT_NOME", nullable = false, length = 255)
     private String nome;
@@ -92,10 +102,19 @@ public class Estabelecimento implements Serializable {
         return servicos.remove(servico);
     }
     
+    public Collection<String> getTelefones() {
+        return telefones;
+    }
+    
+    public void adicionaTelefone(String telefone) {
+        if (telefones == null) telefones = new HashSet<>();
+        telefones.add(telefone);
+    }
+    
     public String getNome() {
         return nome;
     }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
