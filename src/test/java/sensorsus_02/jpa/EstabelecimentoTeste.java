@@ -61,6 +61,9 @@ public class EstabelecimentoTeste extends Teste {
         Servico servico2 = estabelecimento.getServicos().get(1);
         assertEquals("Limpeza da Recepção", servico2.getNome());
         assertEquals("Serviços Gerais", servico2.getDepartamento());
+        
+        assertTrue(estabelecimento.getTelefones().contains("8133333333"));
+        assertTrue(estabelecimento.getTelefones().contains("8144444444"));
     }
     
     @Test
