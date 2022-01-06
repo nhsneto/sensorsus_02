@@ -51,6 +51,18 @@
     <!-- Estabelecimento id = 2 -->
     <TB_ESTABELECIMENTO id_endereco="2" txt_nome="Hospital Restauração" 
             txt_codigo_cnes="333332222211111"/>
+    
+    <!-- Estabelecimento id = 3 -->
+    <TB_ESTABELECIMENTO id_endereco="3" txt_nome="Hospital Getúlio Vargas" 
+            txt_codigo_cnes="222223333344444"/>
+    
+    <!-- Estabelecimento id = 4 -->
+    <TB_ESTABELECIMENTO id_endereco="4" txt_nome="Hospital Otávio de Freitas" 
+            txt_codigo_cnes="444443333322222"/>
+    
+    <!-- Estabelecimento id = 5 -->
+    <TB_ESTABELECIMENTO id_endereco="5" txt_nome="Hospital Barão de Lucena" 
+            txt_codigo_cnes="555554444433333"/>
 
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="1" id_servico="1"/>
     
