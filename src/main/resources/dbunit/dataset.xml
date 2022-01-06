@@ -113,6 +113,22 @@
     <!-- Usuario id = 2 (Profissional Saude) -->
     <TB_USUARIO disc_usuario="PS" txt_nome="Amanda" txt_email="amandasilva20@gmail.com" dt_nascimento = "1999-12-21"
             txt_login="asrf4" txt_senha="amanda1234"/>
+    
+    <!-- Usuario id = 3 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Roberto" txt_email="roberto20@gmail.com" dt_nascimento = "1960-12-25"
+            txt_login="rajs5" txt_senha="roberto1234"/>
+    
+    <!-- Usuario id = 4 (Profissional Saude) -->
+    <TB_USUARIO disc_usuario="PS" txt_nome="Silvio" txt_email="silviodoc13@gmail.com" dt_nascimento = "1982-04-02"
+            txt_login="spfa7" txt_senha="silvio1234"/>
+    
+    <!-- Usuario id = 5 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Severina" txt_email="donaseve33@gmail.com" dt_nascimento = "1947-10-28"
+            txt_login="sam18" txt_senha="severina1234"/>
+    
+    <!-- Usuario id = 6 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Raimunda" txt_email="raialencar99@gmail.com" dt_nascimento = "1968-06-24"
+            txt_login="rar2" txt_senha="raimunda1234"/>
             
     <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
         
