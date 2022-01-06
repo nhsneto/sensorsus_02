@@ -72,6 +72,20 @@
     
     <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="2" id_servico="3"/>
     
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="3" id_servico="4"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="3" id_servico="6"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="4" id_servico="2"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="4" id_servico="3"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="4" id_servico="8"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="5" id_servico="5"/>
+    
+    <TB_ESTABELECIMENTOS_SERVICOS id_estabelecimento="5" id_servico="7"/>
+    
     <TB_TELEFONE id_estabelecimento="1" txt_telefone="8199999999"/>
     
     <TB_TELEFONE id_estabelecimento="1" txt_telefone="8188888888"/>
