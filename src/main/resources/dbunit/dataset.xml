@@ -29,6 +29,21 @@
     <!-- Servico id = 3 -->
     <TB_SERVICO txt_nome="Limpeza da Recepção" txt_departamento="Serviços Gerais"/>
     
+    <!-- Servico id = 4 -->
+    <TB_SERVICO txt_nome="Vacinação" txt_departamento="Enfermagem"/>
+    
+    <!-- Servico id = 5 -->
+    <TB_SERVICO txt_nome="Café da Manhã" txt_departamento="Cozinha"/>
+    
+    <!-- Servico id = 6 -->
+    <TB_SERVICO txt_nome="Limpeza dos Banheiros" txt_departamento="Serviços Gerais"/>
+    
+    <!-- Servico id = 7 -->
+    <TB_SERVICO txt_nome="Organização da Fila" txt_departamento="Administração"/>
+    
+    <!-- Servico id = 8 -->
+    <TB_SERVICO txt_nome="Jantar" txt_departamento="Cozinha"/>
+    
     <!-- Estabelecimento id = 1 -->
     <TB_ESTABELECIMENTO id_endereco="1" txt_nome="Hospital Oswaldo Cruz" 
             txt_codigo_cnes="111112222233333"/>
