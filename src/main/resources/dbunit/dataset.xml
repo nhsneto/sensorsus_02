@@ -161,4 +161,38 @@
     <!-- Avaliacao id = 2 -->
     <TB_AVALIACAO txt_comentario="Grande quantidade de pacientes para poucos profissionais de saúde no setor neurológico" 
             id_usuario="2" id_estabelecimento="2"/>
+    
+    <!-- Avaliacao id = 3 -->
+    <TB_AVALIACAO txt_comentario="Fui vacinado muito rapidamente. Profissionais excelentes" 
+            id_usuario="3" id_estabelecimento="3"/>
+    
+    <!-- Avaliacao id = 4 -->
+    <TB_AVALIACAO txt_comentario="Banheiro bastante limpo" 
+            id_usuario="3" id_estabelecimento="3"/>
+    
+    <!-- Avaliacao id = 5 -->
+    <TB_AVALIACAO txt_comentario="Poucos maqueiros para demanda diária" 
+            id_usuario="4" id_estabelecimento="4"/>
+    
+    <!-- Avaliacao id = 6 -->
+    <TB_AVALIACAO txt_comentario="Poucos seguranças para a demanda diária" 
+            id_usuario="4" id_estabelecimento="4"/>
+    
+    <!-- Avaliacao id = 7 -->
+    <TB_AVALIACAO txt_comentario="Filas pequenas fui atendida rápido" 
+            id_usuario="5" id_estabelecimento="5"/>
+    
+    <!-- Avaliacao id = 8 -->
+    <TB_AVALIACAO txt_comentario="Esperei muito na fila para ser vacinada" 
+            id_usuario="6" id_estabelecimento="3"/>
+    
+    <!-- Avaliacao id = 9 -->
+    <TB_AVALIACAO txt_comentario="Sempre com café da manhã variado e nutritivo" 
+            id_usuario="7" id_estabelecimento="5"/>
+    
+    <!-- Avaliacao id = 10 -->
+    <TB_AVALIACAO txt_comentario="Faltam mais profissionais para adiminstrar as filas" 
+            id_usuario="7" id_estabelecimento="5"/>
+    
+    <!-- usuario 8 nao possui avaliacao -->
 </dataset>
