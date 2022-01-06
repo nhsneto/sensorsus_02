@@ -129,6 +129,14 @@
     <!-- Usuario id = 6 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Raimunda" txt_email="raialencar99@gmail.com" dt_nascimento = "1968-06-24"
             txt_login="rar2" txt_senha="raimunda1234"/>
+    
+    <!-- Usuario id = 7 (Profissional Saude) -->
+    <TB_USUARIO disc_usuario="PS" txt_nome="Camila" txt_email="camilaribeiro10@gmail.com" dt_nascimento = "1995-02-24"
+            txt_login="crn8" txt_senha="camila1234"/>
+    
+    <!-- Usuario id = 8 (Profissional Saude) -->
+    <TB_USUARIO disc_usuario="PS" txt_nome="Jessica" txt_email="jess77@gmail.com" dt_nascimento = "1985-11-15"
+            txt_login="jas9" txt_senha="jessica1234"/>
             
     <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
     
