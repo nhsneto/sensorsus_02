@@ -131,6 +131,12 @@
             txt_login="rar2" txt_senha="raimunda1234"/>
             
     <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
+    
+    <TB_PACIENTE id_usuario="3" txt_numero_sus="222222222222222"/>
+    
+    <TB_PACIENTE id_usuario="5" txt_numero_sus="333333333333333"/>
+    
+    <TB_PACIENTE id_usuario="6" txt_numero_sus="444444444444444"/>
         
     <TB_PROFISSIONAL_SAUDE id_usuario="2" txt_inscricao_conselho_regional="111222333444"/>
     
