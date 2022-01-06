@@ -110,17 +110,17 @@
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" dt_nascimento = "1989-05-17"
             txt_login="jfs6" txt_senha="jose1234"/>
     
-    <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
-        
-        <!-- Avaliacao id = 1 -->
-    <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
-            id_usuario="1" id_estabelecimento="1"/>
-        
     <!-- Usuario id = 2 (Profissional Saude) -->
     <TB_USUARIO disc_usuario="PS" txt_nome="Amanda" txt_email="amandasilva20@gmail.com" dt_nascimento = "1999-12-21"
             txt_login="asrf4" txt_senha="amanda1234"/>
-    
+            
+    <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
+        
     <TB_PROFISSIONAL_SAUDE id_usuario="2" txt_inscricao_conselho_regional="111222333444"/>
+    
+    <!-- Avaliacao id = 1 -->
+    <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
+            id_usuario="1" id_estabelecimento="1"/>
     
     <!-- Avaliacao id = 2 -->
     <TB_AVALIACAO txt_comentario="Grande quantidade de pacientes para poucos profissionais de saúde no setor neurológico" 
