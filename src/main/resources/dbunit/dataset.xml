@@ -8,6 +8,18 @@
     <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Derby" 
             txt_logradouro="Av Agamenon Magalhães" int_numero="150"/>
     
+    <!-- Enderedo id = 3 -->
+    <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Cordeiro" 
+            txt_logradouro="Av General San Martin" int_numero="90"/>
+    
+    <!-- Enderedo id = 4 -->
+    <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Tejipio" 
+            txt_logradouro="Rua Aprígio Guimarães" int_numero="80"/>
+    
+    <!-- Enderedo id = 5 -->
+    <TB_ENDERECO txt_estado="Pernambuco" txt_cidade="Recife" txt_bairro="Iputinga" 
+            txt_logradouro="Av Caxangá" int_numero="30"/>
+    
     <!-- Servico id = 1 -->
     <TB_SERVICO txt_nome="Recepção do Paciente" txt_departamento="Administração"/>
     
