@@ -40,4 +40,14 @@ public class EstabelecimentoJpqlTest extends GenericTest {
             assertEquals(2, estabelecimento.getServicos().size());
         });
     }
+    
+    @Test
+    public void estabelecimentosSemServicos() {
+        logger.info("Executando estabelecimentosSemServicos()");
+        TypedQuery<Estabelecimento> query = 
+                em.createQuery("SELECT e FROM Estabelecimento e WHERE e.servicos IS EMPTY", 
+                        Estabelecimento.class);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertTrue(estabelecimentos.isEmpty());
+    }
 }
