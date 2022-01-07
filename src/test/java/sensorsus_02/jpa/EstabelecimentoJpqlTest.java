@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 public class EstabelecimentoJpqlTest extends GenericTest {
     
     @Test
-    public void logradouroDoEnderecoDoEstabelecimentoPorNome() {
-        logger.info("Executando enderecoDoEstabelecimentoPorNome()");
+    public void logradouroDoEstabelecimentoPorNome() {
+        logger.info("Executando logradouroDoEstabelecimentoPorNome()");
         TypedQuery<Estabelecimento> query = 
                 em.createQuery("SELECT e FROM Estabelecimento e WHERE e.nome = :nome", 
                         Estabelecimento.class);
