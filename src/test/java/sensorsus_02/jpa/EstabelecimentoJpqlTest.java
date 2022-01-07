@@ -50,4 +50,15 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         List<Estabelecimento> estabelecimentos = query.getResultList();
         assertTrue(estabelecimentos.isEmpty());
     }
+    
+    @Test
+    public void estabelecimentosPorCidade() {
+        logger.info("Executando estabelecimentosPorCidade()");
+        TypedQuery<Estabelecimento> query = em.createNamedQuery("Estabelecimento.PorCidade", 
+                Estabelecimento.class);
+        String cidade = "Recife";
+        query.setParameter("cidade", cidade);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertEquals(5, estabelecimentos.size());
+    }
 }

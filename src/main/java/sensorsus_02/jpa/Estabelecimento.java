@@ -30,6 +30,10 @@ import javax.persistence.Table;
             @NamedQuery(
                     name = "Estabelecimento.SemAvaliacoes",
                     query = "SELECT e FROM Estabelecimento e WHERE e.avaliacoes IS EMPTY"
+            ),
+            @NamedQuery(
+                    name = "Estabelecimento.PorCidade",
+                    query = "SELECT e FROM Estabelecimento e WHERE e.endereco.cidade = :cidade"
             )
         }
 )
