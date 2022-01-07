@@ -1,5 +1,6 @@
 package sensorsus_02.jpa;
 
+import java.util.List;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -16,5 +17,14 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         Estabelecimento estabelecimento = query.getSingleResult();
         String logradouro = "Rua Anorbio Marques";
         assertEquals(logradouro, estabelecimento.getEndereco().getLogradouro());
+    }
+    
+    @Test
+    public void estabelecimentosSemAvaliacoesNamedQuery() {
+        logger.info("Executando estabelecimentosSemAvaliacoesNamedQuery()");
+        TypedQuery<Estabelecimento> query = em.createNamedQuery("Estabelecimento.SemAvaliacoes", 
+                Estabelecimento.class);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertTrue(estabelecimentos.isEmpty());
     }
 }
