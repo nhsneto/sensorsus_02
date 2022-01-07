@@ -133,7 +133,7 @@ public class ProfissionalSaudeTeste extends Teste {
         profissionalSaude = em.find(ProfissionalSaude.class, 5L);
         assertNull(profissionalSaude);
 
-        Avaliacao avaliacao = em.find(Avaliacao.class, 8L);
+        Avaliacao avaliacao = em.find(Avaliacao.class, 6L);
         assertNull(avaliacao);
 
     }
