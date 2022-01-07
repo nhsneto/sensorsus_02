@@ -17,12 +17,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_ESTABELECIMENTO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Estabelecimento.SemAvaliacoes",
+                    query = "SELECT e FROM Estabelecimento e WHERE e.avaliacoes IS EMPTY"
+            )
+        }
+)
 public class Estabelecimento implements Serializable {
 
     @Id
