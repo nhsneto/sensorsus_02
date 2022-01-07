@@ -27,4 +27,17 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         List<Estabelecimento> estabelecimentos = query.getResultList();
         assertTrue(estabelecimentos.isEmpty());
     }
+    
+    @Test
+    public void estabelecimentosComExatamente2Servicos() {
+        logger.info("Executando estabelecimentosComExatamente2Servicos");
+        TypedQuery<Estabelecimento> query = 
+                em.createQuery("SELECT e FROM Estabelecimento e WHERE SIZE(e.servicos) = ?1", 
+                        Estabelecimento.class);
+        query.setParameter(1, 2);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        estabelecimentos.forEach(estabelecimento -> {
+            assertEquals(2, estabelecimento.getServicos().size());
+        });
+    }
 }
