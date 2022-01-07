@@ -103,8 +103,6 @@
     <TB_TELEFONE id_estabelecimento="4" txt_telefone="8122222222"/>
     
     <TB_TELEFONE id_estabelecimento="5" txt_telefone="8100000000"/>
-    
-    <TB_TELEFONE id_estabelecimento="5" txt_telefone="8122223333"/>
         
     <!-- Usuario id = 1 (Paciente) -->
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" dt_nascimento = "1989-05-17"
