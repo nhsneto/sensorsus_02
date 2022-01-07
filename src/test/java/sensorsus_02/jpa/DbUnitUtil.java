@@ -15,6 +15,7 @@ public class DbUnitUtil {
 
     private static final String XML_FILE = "/dbunit/dataset.xml";
 
+    @SuppressWarnings("UseSpecificCatch")
     public static void inserirDados() {
         Connection conn = null;
         IDatabaseConnection db_conn = null;
