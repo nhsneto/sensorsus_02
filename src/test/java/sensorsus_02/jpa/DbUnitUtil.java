@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
@@ -28,7 +27,7 @@ public class DbUnitUtil {
             InputStream in = DbUnitUtil.class.getResourceAsStream(XML_FILE);
             IDataSet dataSet = builder.build(in);
             DatabaseOperation.CLEAN_INSERT.execute(db_conn, dataSet);
-        } catch (SQLException | DatabaseUnitException ex) {
+        } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage(), ex);
         } finally {
             try {
