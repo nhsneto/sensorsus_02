@@ -56,7 +56,7 @@ public class ProfissionalSaudeTeste extends Teste {
 
     @Test
     public void consultarProfissionalSaude() {
-        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, 2L);
+        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, 5L);
         assertNotNull(profissionalSaude);
         assertEquals("Amanda", profissionalSaude.getNome());
         assertEquals("asrf4", profissionalSaude.getLogin());
@@ -79,7 +79,7 @@ public class ProfissionalSaudeTeste extends Teste {
 
     @Test
     public void atualizarProfissionalSaude() {
-        Long id = 2L;
+        Long id = 5L;
 
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, id);
         profissionalSaude.setNome("João");
@@ -103,7 +103,7 @@ public class ProfissionalSaudeTeste extends Teste {
     
     @Test
     public void atualizarProfissionalSaudeMerge() {
-        Long id = 2L;
+        Long id = 5L;
         
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, id);
         assertNotNull(profissionalSaude);
@@ -128,12 +128,12 @@ public class ProfissionalSaudeTeste extends Teste {
 
     @Test
     public void removerProfissionalSaude() {
-        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, 2L);
+        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, 5L);
         em.remove(profissionalSaude);
-        profissionalSaude = em.find(ProfissionalSaude.class, 2L);
+        profissionalSaude = em.find(ProfissionalSaude.class, 5L);
         assertNull(profissionalSaude);
 
-        Avaliacao avaliacao = em.find(Avaliacao.class, 2L);
+        Avaliacao avaliacao = em.find(Avaliacao.class, 8L);
         assertNull(avaliacao);
 
     }

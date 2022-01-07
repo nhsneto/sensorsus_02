@@ -110,26 +110,26 @@
     <TB_USUARIO disc_usuario="PA" txt_nome="Jose" txt_email="josefreitas49@gmail.com" dt_nascimento = "1989-05-17"
             txt_login="jfs6" txt_senha="jose1234"/>
     
-    <!-- Usuario id = 2 (Profissional Saude) -->
+    <!-- Usuario id = 2 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Roberto" txt_email="roberto20@gmail.com" dt_nascimento = "1960-12-25"
+            txt_login="rajs5" txt_senha="roberto1234"/>
+
+    <!-- Usuario id = 3 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Severina" txt_email="donaseve33@gmail.com" dt_nascimento = "1947-10-28"
+            txt_login="sam18" txt_senha="severina1234"/>
+            
+    <!-- Usuario id = 4 (Paciente) -->
+    <TB_USUARIO disc_usuario="PA" txt_nome="Raimunda" txt_email="raialencar99@gmail.com" dt_nascimento = "1968-06-24"
+            txt_login="rar2" txt_senha="raimunda1234"/>    
+    
+    <!-- Usuario id = 5 (Profissional Saude) -->
     <TB_USUARIO disc_usuario="PS" txt_nome="Amanda" txt_email="amandasilva20@gmail.com" dt_nascimento = "1999-12-21"
             txt_login="asrf4" txt_senha="amanda1234"/>
     
-    <!-- Usuario id = 3 (Paciente) -->
-    <TB_USUARIO disc_usuario="PA" txt_nome="Roberto" txt_email="roberto20@gmail.com" dt_nascimento = "1960-12-25"
-            txt_login="rajs5" txt_senha="roberto1234"/>
-    
-    <!-- Usuario id = 4 (Profissional Saude) -->
+    <!-- Usuario id = 6 (Profissional Saude) -->
     <TB_USUARIO disc_usuario="PS" txt_nome="Silvio" txt_email="silviodoc13@gmail.com" dt_nascimento = "1982-04-02"
             txt_login="spfa7" txt_senha="silvio1234"/>
-    
-    <!-- Usuario id = 5 (Paciente) -->
-    <TB_USUARIO disc_usuario="PA" txt_nome="Severina" txt_email="donaseve33@gmail.com" dt_nascimento = "1947-10-28"
-            txt_login="sam18" txt_senha="severina1234"/>
-    
-    <!-- Usuario id = 6 (Paciente) -->
-    <TB_USUARIO disc_usuario="PA" txt_nome="Raimunda" txt_email="raialencar99@gmail.com" dt_nascimento = "1968-06-24"
-            txt_login="rar2" txt_senha="raimunda1234"/>
-    
+            
     <!-- Usuario id = 7 (Profissional Saude) -->
     <TB_USUARIO disc_usuario="PS" txt_nome="Camila" txt_email="camilaribeiro10@gmail.com" dt_nascimento = "1995-02-24"
             txt_login="crn8" txt_senha="camila1234"/>
@@ -140,15 +140,15 @@
             
     <TB_PACIENTE id_usuario="1" txt_numero_sus="111222233334444"/>
     
-    <TB_PACIENTE id_usuario="3" txt_numero_sus="222222222222222"/>
+    <TB_PACIENTE id_usuario="2" txt_numero_sus="222222222222222"/>
     
-    <TB_PACIENTE id_usuario="5" txt_numero_sus="333333333333333"/>
+    <TB_PACIENTE id_usuario="3" txt_numero_sus="333333333333333"/>
     
-    <TB_PACIENTE id_usuario="6" txt_numero_sus="444444444444444"/>
+    <TB_PACIENTE id_usuario="4" txt_numero_sus="444444444444444"/>
         
-    <TB_PROFISSIONAL_SAUDE id_usuario="2" txt_inscricao_conselho_regional="111222333444"/>
+    <TB_PROFISSIONAL_SAUDE id_usuario="5" txt_inscricao_conselho_regional="111222333444"/>
     
-    <TB_PROFISSIONAL_SAUDE id_usuario="4" txt_inscricao_conselho_regional="999999999999"/>
+    <TB_PROFISSIONAL_SAUDE id_usuario="6" txt_inscricao_conselho_regional="999999999999"/>
     
     <TB_PROFISSIONAL_SAUDE id_usuario="7" txt_inscricao_conselho_regional="888888888888"/>
     
@@ -159,32 +159,32 @@
             id_usuario="1" id_estabelecimento="1"/>
     
     <!-- Avaliacao id = 2 -->
-    <TB_AVALIACAO txt_comentario="Grande quantidade de pacientes para poucos profissionais de saúde no setor neurológico" 
-            id_usuario="2" id_estabelecimento="2"/>
+    <TB_AVALIACAO txt_comentario="Fui vacinado muito rapidamente. Profissionais excelentes" 
+            id_usuario="2" id_estabelecimento="3"/>
     
     <!-- Avaliacao id = 3 -->
-    <TB_AVALIACAO txt_comentario="Fui vacinado muito rapidamente. Profissionais excelentes" 
-            id_usuario="3" id_estabelecimento="3"/>
+    <TB_AVALIACAO txt_comentario="Banheiro bastante limpo" 
+            id_usuario="2" id_estabelecimento="3"/>
     
     <!-- Avaliacao id = 4 -->
-    <TB_AVALIACAO txt_comentario="Banheiro bastante limpo" 
-            id_usuario="3" id_estabelecimento="3"/>
+    <TB_AVALIACAO txt_comentario="Filas pequenas fui atendida rápido" 
+            id_usuario="3" id_estabelecimento="5"/>
     
     <!-- Avaliacao id = 5 -->
-    <TB_AVALIACAO txt_comentario="Poucos maqueiros para demanda diária" 
-            id_usuario="4" id_estabelecimento="4"/>
-    
+    <TB_AVALIACAO txt_comentario="Esperei muito na fila para ser vacinada" 
+            id_usuario="4" id_estabelecimento="3"/>
+
     <!-- Avaliacao id = 6 -->
-    <TB_AVALIACAO txt_comentario="Poucos seguranças para a demanda diária" 
-            id_usuario="4" id_estabelecimento="4"/>
-    
+    <TB_AVALIACAO txt_comentario="Grande quantidade de pacientes para poucos profissionais de saúde no setor neurológico" 
+            id_usuario="5" id_estabelecimento="2"/>
+                
     <!-- Avaliacao id = 7 -->
-    <TB_AVALIACAO txt_comentario="Filas pequenas fui atendida rápido" 
-            id_usuario="5" id_estabelecimento="5"/>
+    <TB_AVALIACAO txt_comentario="Poucos maqueiros para demanda diária" 
+            id_usuario="6" id_estabelecimento="4"/>
     
     <!-- Avaliacao id = 8 -->
-    <TB_AVALIACAO txt_comentario="Esperei muito na fila para ser vacinada" 
-            id_usuario="6" id_estabelecimento="3"/>
+    <TB_AVALIACAO txt_comentario="Poucos seguranças para a demanda diária" 
+            id_usuario="6" id_estabelecimento="4"/>
     
     <!-- Avaliacao id = 9 -->
     <TB_AVALIACAO txt_comentario="Sempre com café da manhã variado e nutritivo" 
@@ -194,5 +194,5 @@
     <TB_AVALIACAO txt_comentario="Faltam mais profissionais para adiminstrar as filas" 
             id_usuario="7" id_estabelecimento="5"/>
     
-    <!-- usuario 8 nao possui avaliacao -->
+    <!-- Nao inseri avaliacao para o usuario id = 8 propositalmente -->
 </dataset>
