@@ -61,4 +61,15 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         List<Estabelecimento> estabelecimentos = query.getResultList();
         assertEquals(5, estabelecimentos.size());
     }
+    
+    @Test
+    public void estabelecimentoComOMaiorNumeroDeAvaliacoes() {
+        logger.info("Executando estabelecimentoComOMaiorNumeroDeAvaliacoes()");
+        TypedQuery<Estabelecimento> query = 
+                em.createQuery("SELECT e FROM Estabelecimento e WHERE SIZE(e.avaliacoes) = "
+                        + "SELECT MAX(SIZE(e.avaliacoes)) FROM Estabelecimento e",
+                        Estabelecimento.class);
+        Estabelecimento estabelecimento = query.getSingleResult();
+        assertEquals(4, estabelecimento.getAvaliacoes().size());
+    }
 }
