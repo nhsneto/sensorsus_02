@@ -102,4 +102,17 @@ public class EstabelecimentoJpqlTest extends GenericTest {
     private String getBairro(Estabelecimento estabelecimento) {
         return estabelecimento.getEndereco().getBairro();
     }
+    
+    @Test
+    public void estabelecimentosPorLogradouroSubstring() {
+        logger.info("Executando estabelecimentosPorLogradouroSubstring()");
+        TypedQuery<Estabelecimento> query = 
+                em.createNamedQuery("Estabelecimento.PorLogradouroSubstring", 
+                        Estabelecimento.class);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertEquals(3, estabelecimentos.size());
+        assertEquals("Hospital Barão de Lucena", estabelecimentos.get(0).getNome());
+        assertEquals("Hospital Getúlio Vargas", estabelecimentos.get(1).getNome());
+        assertEquals("Hospital Restauração", estabelecimentos.get(2).getNome());
+    }
 }
