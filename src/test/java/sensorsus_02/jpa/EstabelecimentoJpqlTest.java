@@ -115,4 +115,15 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         assertEquals("Hospital Getúlio Vargas", estabelecimentos.get(1).getNome());
         assertEquals("Hospital Restauração", estabelecimentos.get(2).getNome());
     }
+    
+    @Test
+    public void estabelecimentoPorPadraoDeCodigoCnes() {
+        logger.info("Executando estabelecimentoPorPadraoDeCodigoCnes");
+        TypedQuery<Estabelecimento> query = em.createQuery("SELECT e FROM Estabelecimento e "
+                + "WHERE e.codigoCnes LIKE '%11111%' ORDER BY e.nome", Estabelecimento.class);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertEquals(2, estabelecimentos.size());
+        assertEquals("Hospital Oswaldo Cruz", estabelecimentos.get(0).getNome());
+        assertEquals("Hospital Restauração", estabelecimentos.get(1).getNome());
+    }
 }
