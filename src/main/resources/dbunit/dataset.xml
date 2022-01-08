@@ -192,5 +192,9 @@
     <TB_AVALIACAO txt_comentario="Faltam mais profissionais para adiminstrar as filas" 
             id_usuario="7" id_estabelecimento="5"/>
     
+    <!-- Avaliacao id = 11 -->
+    <TB_AVALIACAO txt_comentario="Apenas um banheiro. Muito pouco pra demanda" 
+            id_usuario="4" id_estabelecimento="3"/>
+    
     <!-- Nao inseri avaliacao para o usuario id = 8 propositalmente -->
 </dataset>
