@@ -78,11 +78,11 @@ public class EstabelecimentoJpqlTest extends GenericTest {
                 + "JOIN e.endereco en ORDER BY en.bairro", Estabelecimento.class);
         List<Estabelecimento> estabelecimentos = query.getResultList();
         assertEquals(5, estabelecimentos.size());
-        assertEquals("Cordeiro", estabelecimentos.get(0).getEndereco().getBairro());
-        assertEquals("Derby", estabelecimentos.get(1).getEndereco().getBairro());
-        assertEquals("Iputinga", estabelecimentos.get(2).getEndereco().getBairro());
-        assertEquals("Santo Amaro", estabelecimentos.get(3).getEndereco().getBairro());
-        assertEquals("Tejipio", estabelecimentos.get(4).getEndereco().getBairro());
+        assertEquals("Cordeiro", getBairro(estabelecimentos.get(0)));
+        assertEquals("Derby", getBairro(estabelecimentos.get(1)));
+        assertEquals("Iputinga", getBairro(estabelecimentos.get(2)));
+        assertEquals("Santo Amaro", getBairro(estabelecimentos.get(3)));
+        assertEquals("Tejipio", getBairro(estabelecimentos.get(4)));
     }
     
     @Test
@@ -92,10 +92,14 @@ public class EstabelecimentoJpqlTest extends GenericTest {
                 + "JOIN e.endereco en ORDER BY en.bairro DESC", Estabelecimento.class);
         List<Estabelecimento> estabelecimentos = query.getResultList();
         assertEquals(5, estabelecimentos.size());
-        assertEquals("Tejipio", estabelecimentos.get(0).getEndereco().getBairro());
-        assertEquals("Santo Amaro", estabelecimentos.get(1).getEndereco().getBairro());
-        assertEquals("Iputinga", estabelecimentos.get(2).getEndereco().getBairro());
-        assertEquals("Derby", estabelecimentos.get(3).getEndereco().getBairro());
-        assertEquals("Cordeiro", estabelecimentos.get(4).getEndereco().getBairro());
+        assertEquals("Tejipio", getBairro(estabelecimentos.get(0)));
+        assertEquals("Santo Amaro", getBairro(estabelecimentos.get(1)));
+        assertEquals("Iputinga", getBairro(estabelecimentos.get(2)));
+        assertEquals("Derby", getBairro(estabelecimentos.get(3)));
+        assertEquals("Cordeiro", getBairro(estabelecimentos.get(4)));
+    }
+    
+    private String getBairro(Estabelecimento estabelecimento) {
+        return estabelecimento.getEndereco().getBairro();
     }
 }
