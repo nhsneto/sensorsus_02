@@ -34,6 +34,11 @@ import javax.persistence.Table;
             @NamedQuery(
                     name = "Estabelecimento.PorCidade",
                     query = "SELECT e FROM Estabelecimento e WHERE e.endereco.cidade = :cidade"
+            ),
+            @NamedQuery(
+                    name = "Estabelecimento.MaiorNumeroDeAvaliacoes",
+                    query = "SELECT e FROM Estabelecimento e WHERE SIZE(e.avaliacoes) = "
+                            + "SELECT MAX(SIZE(e.avaliacoes)) FROM Estabelecimento e"
             )
         }
 )
