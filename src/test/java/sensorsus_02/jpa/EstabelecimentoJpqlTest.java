@@ -70,4 +70,18 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         Estabelecimento estabelecimento = query.getSingleResult();
         assertEquals(4, estabelecimento.getAvaliacoes().size());
     }
+    
+    @Test
+    public void estabelecimentosPorBairroOrdemCrescente() {
+        logger.info("Executando estabelecimentosPorBairro()");
+        TypedQuery<Estabelecimento> query = em.createQuery("SELECT e FROM Estabelecimento e "
+                + "JOIN e.endereco en ORDER BY en.bairro", Estabelecimento.class);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        assertEquals(5, estabelecimentos.size());
+        assertEquals("Cordeiro", estabelecimentos.get(0).getEndereco().getBairro());
+        assertEquals("Derby", estabelecimentos.get(1).getEndereco().getBairro());
+        assertEquals("Iputinga", estabelecimentos.get(2).getEndereco().getBairro());
+        assertEquals("Santo Amaro", estabelecimentos.get(3).getEndereco().getBairro());
+        assertEquals("Tejipio", estabelecimentos.get(4).getEndereco().getBairro());
+    }
 }
