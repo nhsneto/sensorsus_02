@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -28,4 +29,16 @@ public class AvaliacaoJpqlTest extends GenericTest {
         assertEquals(0, avaliacoes.size());
     }
     
+    @Test
+    public void avaliacoesPorPadraoEmComentario() {
+        logger.info("Executando avaliacoesPorPadraoEmComentario()");
+        TypedQuery<Avaliacao> query = em.createQuery("SELECT a FROM Avaliacao a "
+                + "WHERE LOWER(a.comentario) LIKE :padrao", Avaliacao.class);
+        query.setParameter("padrao", "%fila%");
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(4, avaliacoes.size());
+        avaliacoes.forEach(avaliacao -> {
+            assertTrue(Pattern.compile("[F|f]ila").matcher(avaliacao.getComentario()).find());
+        });
+    }
 }
