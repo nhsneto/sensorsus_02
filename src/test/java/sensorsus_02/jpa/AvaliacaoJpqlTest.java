@@ -84,4 +84,24 @@ public class AvaliacaoJpqlTest extends GenericTest {
                     .compareTo(dataNascimento60Anos.getTime()) <= 0);
         });
     }
+    
+    @Test
+    public void avaliacoesPorTipoDeUsuario() {
+        logger.info("Executando avaliacoesPorTipoDeUsuario()");
+        TypedQuery<Avaliacao> query = em.createQuery("SELECT a FROM Avaliacao a "
+                + "JOIN FETCH a.usuario u WHERE TYPE(u) = :tipoUsuario", 
+                Avaliacao.class);
+        query.setParameter("tipoUsuario", ProfissionalSaude.class);
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(5, avaliacoes.size());
+        assertEquals("Amanda", nomeUsuario(avaliacoes.get(0)));
+        assertEquals("Silvio", nomeUsuario(avaliacoes.get(1)));
+        assertEquals("Silvio", nomeUsuario(avaliacoes.get(2)));
+        assertEquals("Camila", nomeUsuario(avaliacoes.get(3)));
+        assertEquals("Camila", nomeUsuario(avaliacoes.get(4)));
+    }
+    
+    private String nomeUsuario(Avaliacao a) {
+        return a.getUsuario().getNome();
+    }
 }
