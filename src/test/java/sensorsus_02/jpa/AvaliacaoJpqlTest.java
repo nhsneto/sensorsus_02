@@ -41,4 +41,16 @@ public class AvaliacaoJpqlTest extends GenericTest {
             assertTrue(Pattern.compile("[F|f]ila").matcher(avaliacao.getComentario()).find());
         });
     }
+    
+    @Test
+    public void avaliacoesComUsuariosJoinFetch() {
+        logger.info("Executando avaliacoesComUsuariosJoinFetch()");
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.ComUsuariosJoinFetch", 
+                Avaliacao.class);
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(11, avaliacoes.size());
+        avaliacoes.forEach(avaliacao -> {
+            assertNotNull(avaliacao.getUsuario());
+        });
+    }
 }

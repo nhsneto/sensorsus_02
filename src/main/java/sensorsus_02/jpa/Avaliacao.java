@@ -17,10 +17,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TB_AVALIACAO")
 @NamedQueries(
+    {
         @NamedQuery(
-                name = "Avaliacao.SemUsuario",
-                query = "SELECT a FROM Avaliacao a WHERE a.usuario IS NULL"
+            name = "Avaliacao.SemUsuario",
+            query = "SELECT a FROM Avaliacao a WHERE a.usuario IS NULL"
+        ),
+        @NamedQuery(
+            name = "Avaliacao.ComUsuariosJoinFetch",
+            query = "SELECT a FROM Avaliacao a JOIN FETCH a.usuario"
         )
+    }
 )
 public class Avaliacao implements Serializable {
 
