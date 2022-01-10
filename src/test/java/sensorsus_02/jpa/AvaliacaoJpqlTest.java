@@ -53,4 +53,18 @@ public class AvaliacaoJpqlTest extends GenericTest {
             assertNotNull(avaliacao.getUsuario());
         });
     }
+    
+    @Test
+    public void avaliacoesPorBairro() {
+        logger.info("Executando avaliacoesPorBairro()");
+        TypedQuery<Avaliacao> query = em.createQuery("SELECT a FROM Avaliacao a "
+                + "WHERE a.estabelecimento.endereco.bairro = :bairro", Avaliacao.class);
+        query.setParameter("bairro", "Santo Amaro");
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(1, avaliacoes.size());
+        String comentario = "O atendimento na recepção foi rápido, apesar da fila grande";
+        assertEquals(comentario, avaliacoes.get(0).getComentario());
+        String nome = "Jose";
+        assertEquals(nome, avaliacoes.get(0).getUsuario().getNome());
+    }
 }
