@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -125,5 +126,25 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         assertEquals(2, estabelecimentos.size());
         assertEquals("Hospital Oswaldo Cruz", estabelecimentos.get(0).getNome());
         assertEquals("Hospital Restauração", estabelecimentos.get(1).getNome());
+    }
+    
+    @Test
+    public void estabelecimentosQuantidadeAvaliacoes() {
+        logger.info("Executando estabelecimentosQuantidadeAvaliacoes()");
+        Query query = em.createQuery("SELECT e, COUNT(a) FROM Estabelecimento e, Avaliacao a "
+                + "WHERE a MEMBER OF e.avaliacoes GROUP BY e ORDER BY e.nome");
+        List<Object[]> resultados = query.getResultList();
+        assertEquals(5, resultados.size());
+        assertEquals("Hospital Barão de Lucena 3", estabelecimentoAvaliacoes(resultados.get(0)));
+        assertEquals("Hospital Getúlio Vargas 4", estabelecimentoAvaliacoes(resultados.get(1)));
+        assertEquals("Hospital Oswaldo Cruz 1", estabelecimentoAvaliacoes(resultados.get(2)));
+        assertEquals("Hospital Otávio de Freitas 2", estabelecimentoAvaliacoes(resultados.get(3)));
+        assertEquals("Hospital Restauração 1", estabelecimentoAvaliacoes(resultados.get(4)));
+    }
+    
+    private String estabelecimentoAvaliacoes(Object[] objeto) {
+        Estabelecimento estabelecimento = (Estabelecimento) objeto[0];
+        Long avaliacoes = (Long) objeto[1];
+        return estabelecimento.getNome() + " " + avaliacoes;
     }
 }
