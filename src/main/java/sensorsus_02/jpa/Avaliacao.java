@@ -10,10 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_AVALIACAO")
+@NamedQueries(
+        @NamedQuery(
+                name = "Avaliacao.SemUsuario",
+                query = "SELECT a FROM Avaliacao a WHERE a.usuario IS NULL"
+        )
+)
 public class Avaliacao implements Serializable {
 
     @Id
