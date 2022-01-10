@@ -25,6 +25,10 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Avaliacao.ComUsuariosJoinFetch",
             query = "SELECT a FROM Avaliacao a JOIN FETCH a.usuario"
+        ),
+        @NamedQuery(
+            name = "Avaliacao.UsuariosAcimaDe60Anos",
+            query = "SELECT a FROM Avaliacao a WHERE a.usuario.dataNascimento <= ?1"
         )
     }
 )

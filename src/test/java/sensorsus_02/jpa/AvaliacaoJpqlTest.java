@@ -1,5 +1,6 @@
 package sensorsus_02.jpa;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
 import javax.persistence.TypedQuery;
@@ -66,5 +67,21 @@ public class AvaliacaoJpqlTest extends GenericTest {
         assertEquals(comentario, avaliacoes.get(0).getComentario());
         String nome = "Jose";
         assertEquals(nome, avaliacoes.get(0).getUsuario().getNome());
+    }
+    
+    @Test
+    public void avaliacoesDeUsuariosAcimaDos60Anos() {
+        logger.info("Executando avaliacoesDeUsuariosAcimaDos60Anos()");
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.UsuariosAcimaDe60Anos",
+                Avaliacao.class);
+        Calendar dataNascimento60Anos = Calendar.getInstance();
+        dataNascimento60Anos.add(Calendar.YEAR, -60);
+        query.setParameter(1, dataNascimento60Anos.getTime());
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(3, avaliacoes.size());
+        avaliacoes.forEach(avaliacao -> {
+            assertTrue(avaliacao.getUsuario().getDataNascimento()
+                    .compareTo(dataNascimento60Anos.getTime()) <= 0);
+        });
     }
 }
