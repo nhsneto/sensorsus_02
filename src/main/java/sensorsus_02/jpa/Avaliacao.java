@@ -29,6 +29,10 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Avaliacao.UsuariosAcimaDe60Anos",
             query = "SELECT a FROM Avaliacao a WHERE a.usuario.dataNascimento <= ?1"
+        ),
+        @NamedQuery(
+            name = "Avaliacao.QuantidadeTotal",
+            query = "SELECT COUNT(a) FROM Avaliacao a"
         )
     }
 )

@@ -104,4 +104,14 @@ public class AvaliacaoJpqlTest extends GenericTest {
     private String nomeUsuario(Avaliacao a) {
         return a.getUsuario().getNome();
     }
+    
+    @Test
+    public void quantidadeTotalDeAvaliacoes() {
+        logger.info("Executando quantidadeTotalDeAvaliacoes()");
+        TypedQuery<Long> query = em.createNamedQuery("Avaliacao.QuantidadeTotal", 
+                Long.class);
+        Long total = query.getSingleResult();
+        Long totalEsperado = 11L;
+        assertEquals(totalEsperado, total);
+    }
 }
