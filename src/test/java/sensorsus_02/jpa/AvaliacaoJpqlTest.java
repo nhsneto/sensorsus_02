@@ -134,4 +134,19 @@ public class AvaliacaoJpqlTest extends GenericTest {
     private String avaliacoesUsuarioNome(Object[] resultado) {
         return resultado[0] + " " + resultado[1];
     }
+    
+    @Test
+    public void avaliacoesPorSubstring() {
+        logger.info("avaliacoesPorSubstring()");
+        TypedQuery<Avaliacao> query = em.createQuery("SELECT a FROM Avaliacao a "
+                + "WHERE SUBSTRING(LOWER(a.comentario), 1, 6) = 'poucos'", Avaliacao.class);
+        List<Avaliacao> avaliacoes = query.getResultList();
+        assertEquals(2, avaliacoes.size());
+        assertEquals("Silvio", getUsuarioNome(avaliacoes.get(0)));
+        assertEquals("Silvio", getUsuarioNome(avaliacoes.get(1)));
+    }
+    
+    private String getUsuarioNome(Avaliacao a) {
+        return a.getUsuario().getNome();
+    }
 }
