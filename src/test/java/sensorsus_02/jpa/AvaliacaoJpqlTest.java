@@ -3,6 +3,7 @@ package sensorsus_02.jpa;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -113,5 +114,24 @@ public class AvaliacaoJpqlTest extends GenericTest {
         Long total = query.getSingleResult();
         Long totalEsperado = 11L;
         assertEquals(totalEsperado, total);
+    }
+    
+    @Test
+    public void quantidadeAvaliacoesPorUsuario() {
+        logger.info("Executando quantidadeAvaliacoesPorUsuario()");
+        Query query = em.createQuery("SELECT COUNT(a), u.nome FROM Avaliacao a, Usuario u "
+                + "WHERE a.usuario.nome = u.nome GROUP BY u ORDER BY u.nome");
+        List<Object[]> resultados = query.getResultList();
+        assertEquals("1 Amanda", avaliacoesUsuarioNome(resultados.get(0)));
+        assertEquals("2 Camila", avaliacoesUsuarioNome(resultados.get(1)));
+        assertEquals("1 Jose", avaliacoesUsuarioNome(resultados.get(2)));
+        assertEquals("2 Raimunda", avaliacoesUsuarioNome(resultados.get(3)));
+        assertEquals("2 Roberto", avaliacoesUsuarioNome(resultados.get(4)));
+        assertEquals("1 Severina", avaliacoesUsuarioNome(resultados.get(5)));
+        assertEquals("2 Silvio", avaliacoesUsuarioNome(resultados.get(6)));
+    }
+    
+    private String avaliacoesUsuarioNome(Object[] resultado) {
+        return resultado[0] + " " + resultado[1];
     }
 }
