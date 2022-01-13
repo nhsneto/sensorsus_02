@@ -8,11 +8,21 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_ENDERECO")
+@NamedQueries(
+    {
+        @NamedQuery(
+            name = "Endereco.PorBairro",
+            query = "SELECT e FROM Endereco e WHERE e.bairro = :bairro"
+        )
+    }
+)
 public class Endereco implements Serializable {
     
     @Id
