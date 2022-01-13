@@ -1,6 +1,7 @@
 package sensorsus_02.jpa;
 
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -41,5 +42,22 @@ public class EnderecoJpqlTest extends GenericTest {
         assertEquals(2, enderecos.size());
         assertEquals("Rua Anorbio Marques", enderecos.get(0).getLogradouro());
         assertEquals("Rua Aprígio Guimarães", enderecos.get(1).getLogradouro());
+    }
+    
+    @Test
+    public void avaliacoesPorBairro() {
+        logger.info("Executando avaliacoesPorBairro()");
+        Query query = em.createNamedQuery("Endereco.avaliacoesPorBairro");
+        List<Object[]> resultados = query.getResultList();
+        assertEquals(5, resultados.size());
+        assertEquals("Cordeiro 4", bairroAvaliacoes(resultados.get(0)));
+        assertEquals("Derby 1", bairroAvaliacoes(resultados.get(1)));
+        assertEquals("Iputinga 3", bairroAvaliacoes(resultados.get(2)));
+        assertEquals("Santo Amaro 1", bairroAvaliacoes(resultados.get(3)));
+        assertEquals("Tejipio 2", bairroAvaliacoes(resultados.get(4)));
+    }
+    
+    private String bairroAvaliacoes(Object[] resultado) {
+        return resultado[0] + " " + resultado[1];
     }
 }

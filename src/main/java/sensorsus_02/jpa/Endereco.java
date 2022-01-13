@@ -20,6 +20,12 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Endereco.PorBairro",
             query = "SELECT e FROM Endereco e WHERE e.bairro = :bairro"
+        ),
+        @NamedQuery(
+            name = "Endereco.avaliacoesPorBairro",
+            query = "SELECT e.bairro, COUNT(a) FROM Endereco e, Avaliacao a "
+                    + "WHERE a.estabelecimento.endereco.numero = e.numero "
+                    + "GROUP BY e ORDER BY e.bairro"
         )
     }
 )
