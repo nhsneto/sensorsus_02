@@ -1,5 +1,6 @@
 package sensorsus_02.jpa;
 
+import java.util.List;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -28,5 +29,17 @@ public class EnderecoJpqlTest extends GenericTest {
         Long id = 3L;
         assertEquals(id, endereco.getId());
         assertEquals("Av General San Martin", endereco.getLogradouro());
+    }
+    
+    @Test
+    public void enderecoPorPadraoLogradouro() {
+        logger.info("Executando enderecoPorPadraoLegradouro()");
+        TypedQuery<Endereco> query = em.createQuery("SELECT e FROM Endereco e "
+                + "WHERE e.logradouro LIKE :padrao", Endereco.class);
+        query.setParameter("padrao", "%Rua%");
+        List<Endereco> enderecos = query.getResultList();
+        assertEquals(2, enderecos.size());
+        assertEquals("Rua Anorbio Marques", enderecos.get(0).getLogradouro());
+        assertEquals("Rua Aprígio Guimarães", enderecos.get(1).getLogradouro());
     }
 }
