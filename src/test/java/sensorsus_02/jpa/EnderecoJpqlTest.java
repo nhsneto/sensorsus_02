@@ -60,4 +60,16 @@ public class EnderecoJpqlTest extends GenericTest {
     private String bairroAvaliacoes(Object[] resultado) {
         return resultado[0] + " " + resultado[1];
     }
+    
+    @Test
+    public void enderecoComMaiorNumeroAvaliacoes() {
+        logger.info("Executando enderecoComMaiorNumeroAvaliacoes()");
+        TypedQuery<Endereco> query = em.createQuery("SELECT DISTINCT e FROM Endereco e JOIN Estabelecimento es "
+                + "WHERE e.numero = SELECT es.endereco.numero FROM Estabelecimento es "
+                + "WHERE SIZE(es.avaliacoes) = SELECT MAX(SIZE(es.avaliacoes)) "
+                + "FROM Estabelecimento es", Endereco.class);
+        List<Endereco> enderecos = query.getResultList();
+        assertEquals(1, enderecos.size());
+        assertEquals("Cordeiro", enderecos.get(0).getBairro());
+    }
 }
