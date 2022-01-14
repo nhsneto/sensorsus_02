@@ -26,6 +26,11 @@ import javax.persistence.Table;
             query = "SELECT e.bairro, COUNT(a) FROM Endereco e, Avaliacao a "
                     + "WHERE a.estabelecimento.endereco.numero = e.numero "
                     + "GROUP BY e ORDER BY e.bairro"
+        ),
+        @NamedQuery(
+            name = "Endereco.SemEstabelecimento",
+            query = "SELECT e FROM Endereco e WHERE e "
+                    + "NOT IN (SELECT e FROM Endereco e JOIN Estabelecimento es)"
         )
     }
 )

@@ -76,8 +76,7 @@ public class EnderecoJpqlTest extends GenericTest {
     @Test
     public void enderecoSemEstabelecimento() {
         logger.info("Executando enderecoSemEstabelecimento()");
-        TypedQuery<Endereco> query = em.createQuery("SELECT e FROM Endereco e "
-                + "WHERE e NOT IN (SELECT e FROM Endereco e JOIN Estabelecimento es)", 
+        TypedQuery<Endereco> query = em.createNamedQuery("Endereco.SemEstabelecimento", 
                 Endereco.class);
         List<Endereco> enderecos = query.getResultList();
         assertEquals(0, enderecos.size());
