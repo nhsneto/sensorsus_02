@@ -72,4 +72,14 @@ public class EnderecoJpqlTest extends GenericTest {
         assertEquals(1, enderecos.size());
         assertEquals("Cordeiro", enderecos.get(0).getBairro());
     }
+    
+    @Test
+    public void enderecoSemEstabelecimento() {
+        logger.info("Executando enderecoSemEstabelecimento()");
+        TypedQuery<Endereco> query = em.createQuery("SELECT e FROM Endereco e "
+                + "WHERE e NOT IN (SELECT e FROM Endereco e JOIN Estabelecimento es)", 
+                Endereco.class);
+        List<Endereco> enderecos = query.getResultList();
+        assertEquals(0, enderecos.size());
+    }
 }
