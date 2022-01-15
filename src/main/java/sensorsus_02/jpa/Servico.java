@@ -17,6 +17,10 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Servico.PorNome",
             query = "SELECT s FROM Servico s WHERE s.nome = :nome"
+        ),
+        @NamedQuery(
+            name = "Servico.NumeroDeServicosPorDepartamento",
+            query = "SELECT COUNT(s) FROM Servico s WHERE s.departamento = ?1"
         )
     }
 )

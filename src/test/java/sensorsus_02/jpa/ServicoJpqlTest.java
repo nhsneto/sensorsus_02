@@ -44,4 +44,15 @@ public class ServicoJpqlTest extends GenericTest {
             assertEquals("Administração", servico.getDepartamento());
         });
     }
+    
+    @Test
+    public void numeroDeServicosPorDepartamento() {
+        logger.info("Executando numeroDeServicosPorDepartamento()");
+        TypedQuery<Long> query = em.createNamedQuery("Servico.NumeroDeServicosPorDepartamento", 
+                Long.class);
+        query.setParameter(1, "Serviços Gerais");
+        Long total = query.getSingleResult();
+        Long totalEsperado = 2L;
+        assertEquals(totalEsperado, total);
+    }
 }
