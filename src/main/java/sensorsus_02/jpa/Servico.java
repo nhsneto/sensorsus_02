@@ -21,6 +21,11 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Servico.NumeroDeServicosPorDepartamento",
             query = "SELECT COUNT(s) FROM Servico s WHERE s.departamento = ?1"
+        ),
+        @NamedQuery(
+            name = "Servico.PorBairro",
+            query = "SELECT s FROM Servico s JOIN FETCH Estabelecimento es "
+                    + "WHERE es.endereco.bairro = :bairro AND s MEMBER OF es.servicos"
         )
     }
 )
