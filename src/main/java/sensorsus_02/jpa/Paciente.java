@@ -9,9 +9,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import java.util.List;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name = "TB_PACIENTE")
+@NamedQueries(
+    {
+        @NamedQuery(
+            name = "Paciente.pacientesComMenosDe60Anos",
+            query = "SELECT p FROM Paciente p WHERE p.dataNascimento <= ?1"
+        ),
+        @NamedQuery(
+            name = "Paciente.QuantidadeTotal",
+            query = "SELECT COUNT(p) FROM Paciente p"
+        )
+    }
+)
 @DiscriminatorValue(value = "PA")
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
 public class Paciente extends Usuario implements Serializable {
