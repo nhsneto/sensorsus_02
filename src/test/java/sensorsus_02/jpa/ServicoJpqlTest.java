@@ -92,4 +92,13 @@ public class ServicoJpqlTest extends GenericTest {
         assertEquals("Recepção do Paciente", servicos.get(0).getNome());
         assertEquals("Limpeza da Recepção", servicos.get(1).getNome());
     }
+    
+    @Test
+    public void numeroTotalDeServicos() {
+        logger.info("Executando numeroTotalDeServicos()");
+        TypedQuery<Long> query = em.createNamedQuery("Servico.NumeroTotal", 
+                Long.class);
+        Long total = 8L;
+        assertEquals(total, query.getSingleResult());
+    }
 }
