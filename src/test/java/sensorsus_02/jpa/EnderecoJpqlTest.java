@@ -93,4 +93,17 @@ public class EnderecoJpqlTest extends GenericTest {
         List<Endereco> enderecos = query.getResultList();
         assertEquals(1, enderecos.size());
     }
+    
+    @Test
+    public void enderecoPorAvaliacao() {
+        logger.info("Executando enderecoPorAvaliacao()");
+        TypedQuery<Endereco> query = em.createNamedQuery("Endereco.PorAvaliacao", Endereco.class);
+        Avaliacao avaliacao = em.find(Avaliacao.class, 7L);
+        query.setParameter("avaliacao", avaliacao);
+        Endereco endereco = query.getSingleResult();
+        Long id = 4L;
+        assertEquals(id, endereco.getId());
+        assertEquals("Tejipio", endereco.getBairro());
+        assertEquals("Rua Aprígio Guimarães", endereco.getLogradouro());
+    }
 }

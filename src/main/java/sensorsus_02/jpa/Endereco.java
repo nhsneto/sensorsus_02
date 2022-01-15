@@ -31,6 +31,11 @@ import javax.persistence.Table;
             name = "Endereco.SemEstabelecimento",
             query = "SELECT e FROM Endereco e WHERE e "
                     + "NOT IN (SELECT e FROM Endereco e JOIN Estabelecimento es)"
+        ),
+        @NamedQuery(
+            name = "Endereco.PorAvaliacao",
+            query = "SELECT e FROM Endereco e JOIN Estabelecimento es ON e.id = es.id "
+                    + "WHERE :avaliacao MEMBER OF es.avaliacoes"
         )
     }
 )
