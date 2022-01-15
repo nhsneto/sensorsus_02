@@ -8,12 +8,22 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_PROFISSIONAL_SAUDE")
+@NamedQueries(
+    {
+        @NamedQuery(
+            name = "ProfissionalSaude.QuantidadeTotal",
+            query = "SELECT COUNT(ps) FROM ProfissionalSaude ps"
+        )
+    }
+)
 @DiscriminatorValue(value = "PS")
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
 public class ProfissionalSaude extends Usuario implements Serializable {
