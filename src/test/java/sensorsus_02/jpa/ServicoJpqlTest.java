@@ -96,8 +96,7 @@ public class ServicoJpqlTest extends GenericTest {
     @Test
     public void numeroTotalDeServicos() {
         logger.info("Executando numeroTotalDeServicos()");
-        TypedQuery<Long> query = em.createNamedQuery("Servico.NumeroTotal", 
-                Long.class);
+        TypedQuery<Long> query = em.createNamedQuery("Servico.NumeroTotal", Long.class);
         Long total = 8L;
         assertEquals(total, query.getSingleResult());
     }
