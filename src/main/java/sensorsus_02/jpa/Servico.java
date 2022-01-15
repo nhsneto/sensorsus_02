@@ -6,10 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_SERVICO")
+@NamedQueries(
+    {
+        @NamedQuery(
+            name = "Servico.PorNome",
+            query = "SELECT s FROM Servico s WHERE s.nome = :nome"
+        )
+    }
+)
 public class Servico implements Serializable {
     
     @Id
