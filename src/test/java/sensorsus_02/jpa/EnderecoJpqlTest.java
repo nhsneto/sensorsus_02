@@ -106,4 +106,22 @@ public class EnderecoJpqlTest extends GenericTest {
         assertEquals("Tejipio", endereco.getBairro());
         assertEquals("Rua Aprígio Guimarães", endereco.getLogradouro());
     }
+    
+    @Test
+    public void numerosELogradouroDosEnderecos() {
+        logger.info("Executando numerosDosEnderecos");
+        Query query = em.createQuery("SELECT e.numero, e.logradouro FROM Endereco e "
+                + "ORDER BY e.numero");
+        List<Object[]> resultados = query.getResultList();
+        assertEquals(5, resultados.size());
+        assertEquals("30 Av Caxangá", numeroLogradouro(resultados.get(0)));
+        assertEquals("80 Rua Aprígio Guimarães", numeroLogradouro(resultados.get(1)));
+        assertEquals("90 Av General San Martin", numeroLogradouro(resultados.get(2)));
+        assertEquals("150 Av Agamenon Magalhães", numeroLogradouro(resultados.get(3)));
+        assertEquals("375 Rua Anorbio Marques", numeroLogradouro(resultados.get(4)));
+    }
+    
+    private String numeroLogradouro(Object[] coluna) {
+        return coluna[0] + " " + coluna[1];
+    }
 }
