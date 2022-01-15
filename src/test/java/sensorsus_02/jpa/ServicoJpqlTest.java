@@ -80,4 +80,16 @@ public class ServicoJpqlTest extends GenericTest {
         assertEquals("Vacinação", servicos.get(0).getNome());
         assertEquals("Limpeza dos Banheiros", servicos.get(1).getNome());
     }
+    
+    @Test
+    public void servicosPorPadraoNome() {
+        logger.info("Executando servicosPorPadraoNome()");
+        TypedQuery<Servico> query = em.createQuery("SELECT s FROM Servico s "
+                + "WHERE LOWER(s.nome) LIKE :padrao", Servico.class);
+        query.setParameter("padrao", "%recepção%");
+        List<Servico> servicos = query.getResultList();
+        assertEquals(2, servicos.size());
+        assertEquals("Recepção do Paciente", servicos.get(0).getNome());
+        assertEquals("Limpeza da Recepção", servicos.get(1).getNome());
+    }
 }
