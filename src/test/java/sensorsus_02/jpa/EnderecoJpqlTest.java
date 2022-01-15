@@ -124,4 +124,14 @@ public class EnderecoJpqlTest extends GenericTest {
     private String numeroLogradouro(Object[] coluna) {
         return coluna[0] + " " + coluna[1];
     }
+    
+    @Test
+    public void enderecosNaoPertencentesPorCidade() {
+        logger.info("Executando enderecosNaoPertencentesPorCidade()");
+        TypedQuery<Endereco> query = em.createNamedQuery("Endereco.NaoPertencentePorCidade", 
+                Endereco.class);
+        query.setParameter("cidade", "recife");
+        List<Endereco> enderecos = query.getResultList();
+        assertEquals(0, enderecos.size());
+    }
 }
