@@ -44,4 +44,20 @@ public class PacienteJpqlTest extends GenericTest {
         Long totalEsperado = 4L;
         assertEquals(totalEsperado, total);
     }
+    
+    @Test
+    public void pacientesNascidosEntreOsAnos40E60() {
+        logger.info("Executando pacientesNascidosNosAnos80()");
+        String jpql = "SELECT pa FROM Paciente pa WHERE pa.dataNascimento BETWEEN ?1 AND ?2 "
+                + "ORDER BY pa.dataNascimento";
+        TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class);
+        query.setParameter(1, getData(1, Calendar.JANUARY, 1940));
+        query.setParameter(2, getData(31, Calendar.DECEMBER, 1969));
+        List<Paciente> pacientes = query.getResultList();
+        assertEquals(3, pacientes.size());
+        String[] nomes = {"Severina", "Roberto", "Raimunda"};
+        for (int i = 0; i < pacientes.size(); i++) {
+            assertEquals(nomes[i], pacientes.get(i).getNome());
+        }
+    }
 }
