@@ -28,6 +28,10 @@ import javax.persistence.NamedQuery;
             name = "Paciente.PorAvaliacao",
             query = "SELECT pa FROM Paciente pa JOIN FETCH Avaliacao a "
                     + "WHERE :avaliacao MEMBER OF pa.avaliacoes"
+        ),
+        @NamedQuery(
+            name = "Paciente.PorPadraoNumeroSus",
+            query = "SELECT pa FROM Paciente pa WHERE pa.numeroSus LIKE :padrao ORDER BY pa.nome"
         )
     }
 )

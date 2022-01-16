@@ -79,4 +79,16 @@ public class PacienteJpqlTest extends GenericTest {
         Paciente paciente = query.getSingleResult();
         assertEquals("Jose", paciente.getNome());
     }
+    
+    @Test
+    public void pacientesPorPadraoNumeroSus() {
+        logger.info("Executando pacientesPorPadraoNumeroSus()");
+        List<Paciente> pacientes = em.createNamedQuery("Paciente.PorPadraoNumeroSus", 
+                Paciente.class).setParameter("padrao", "%333%").getResultList();
+        assertEquals(2, pacientes.size());
+        String[] nomes = {"Jose", "Severina"};
+        for (int i = 0; i < pacientes.size(); i++) {
+            assertEquals(nomes[i], pacientes.get(i).getNome());
+        }
+    }
 }
