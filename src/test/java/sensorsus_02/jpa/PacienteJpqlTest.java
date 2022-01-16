@@ -69,4 +69,14 @@ public class PacienteJpqlTest extends GenericTest {
         Paciente paciente = query.getSingleResult();
         assertEquals("Roberto", paciente.getNome());
     }
+    
+    @Test
+    public void pacientePorLogin() {
+        logger.info("Executando pacientePorLogin()");
+        String jpql = "SELECT pa FROM Paciente pa WHERE pa.login = ?1";
+        TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class);
+        query.setParameter(1, "jfs6");
+        Paciente paciente = query.getSingleResult();
+        assertEquals("Jose", paciente.getNome());
+    }
 }
