@@ -106,4 +106,29 @@ public class PacienteJpqlTest extends GenericTest {
             Pattern.compile("[9@]*").matcher(pacientes.get(i).getEmail()).find();
         }
     }
+    
+    @Test
+    public void pacientesPorNomeEstabelecimento() {
+        logger.info("Executando pacientesPorEstabelecimento()");
+        TypedQuery<Paciente> query = em.createNamedQuery("Paciente.PorNomeEstabelecimento", Paciente.class);
+        String nomeEstabelecimento = em.find(Estabelecimento.class, 3L).getNome();
+        query.setParameter("nome", nomeEstabelecimento);
+        List<Paciente> pacientes = query.getResultList();
+        assertEquals(2, pacientes.size());
+        String[] nomes = {"Raimunda", "Roberto"};
+        for (int i = 0; i < pacientes.size(); i++) {
+            assertEquals(nomes[i], pacientes.get(i).getNome());
+            assertTrue(existeAvaliacaoSobreEstabelecimento(pacientes.get(i).getAvaliacoes(), 
+                    nomeEstabelecimento));
+        }
+    }
+    
+    private boolean existeAvaliacaoSobreEstabelecimento(List<Avaliacao> avaliacoes, 
+            String nomeEstabelecimento) {
+        for (int i = 0; i < avaliacoes.size(); i++) {
+            if (avaliacoes.get(i).getEstabelecimento().getNome()
+                    .equalsIgnoreCase(nomeEstabelecimento)) return true;
+        }
+        return false;
+    }
 }

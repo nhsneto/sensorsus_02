@@ -32,6 +32,12 @@ import javax.persistence.NamedQuery;
         @NamedQuery(
             name = "Paciente.PorPadraoNumeroSus",
             query = "SELECT pa FROM Paciente pa WHERE pa.numeroSus LIKE :padrao ORDER BY pa.nome"
+        ),
+        @NamedQuery(
+            name = "Paciente.PorNomeEstabelecimento",
+            query = "SELECT DISTINCT pa FROM Paciente pa JOIN Avaliacao a ON a "
+                    + "MEMBER OF pa.avaliacoes WHERE a.estabelecimento.nome = :nome "
+                    + "ORDER BY pa.nome"
         )
     }
 )
