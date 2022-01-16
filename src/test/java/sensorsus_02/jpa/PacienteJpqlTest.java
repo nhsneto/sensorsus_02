@@ -2,6 +2,7 @@ package sensorsus_02.jpa;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -89,6 +90,20 @@ public class PacienteJpqlTest extends GenericTest {
         String[] nomes = {"Jose", "Severina"};
         for (int i = 0; i < pacientes.size(); i++) {
             assertEquals(nomes[i], pacientes.get(i).getNome());
+        }
+    }
+    
+    @Test
+    public void pacientesPorPadraoEmail() {
+        logger.info("Executando pacientesPorPadraoEmail()");
+        TypedQuery<Paciente> query = em.createQuery("SELECT p FROM Paciente p WHERE p.email LIKE ?1", 
+                Paciente.class);
+        query.setParameter(1, "9@%");
+        List<Paciente> pacientes = query.getResultList();
+        String[] nomes = {"Jose", "Raimunda"};
+        for (int i = 0; i < pacientes.size(); i++) {
+            assertEquals(nomes[i], pacientes.get(i).getNome());
+            Pattern.compile("[9@]*").matcher(pacientes.get(i).getEmail()).find();
         }
     }
 }
