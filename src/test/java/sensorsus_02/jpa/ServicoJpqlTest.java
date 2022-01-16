@@ -100,4 +100,14 @@ public class ServicoJpqlTest extends GenericTest {
         Long total = 8L;
         assertEquals(total, query.getSingleResult());
     }
+    
+    @Test
+    public void quantidadeDeServicoPorDepartamento() {
+        logger.info("Executando quantidadeDeServicoPorDepartamento()");
+        TypedQuery<Long> query = em.createQuery("SELECT COUNT(s) FROM Servico s "
+                + "WHERE s.departamento = ?1", Long.class);
+        query.setParameter(1, "Enfermagem");
+        Long total = 2L;
+        assertEquals(total, query.getSingleResult());
+    }
 }
