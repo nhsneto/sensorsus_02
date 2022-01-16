@@ -147,4 +147,16 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         Long avaliacoes = (Long) objeto[1];
         return estabelecimento.getNome() + " " + avaliacoes;
     }
+    
+    @Test
+    public void estabelecimentoPorTelefone() {
+        logger.info("Executando estabelecimentoPorTelefone()");
+        TypedQuery<Estabelecimento> query = em.createNamedQuery("Estabelecimento.PorTelefone", 
+                Estabelecimento.class);
+        String telefone = "8177777777";
+        query.setParameter("telefone", telefone);
+        Estabelecimento estabelecimento = query.getSingleResult();
+        assertEquals("Hospital Otávio de Freitas", estabelecimento.getNome());
+        assertTrue(estabelecimento.getTelefones().contains(telefone));
+    }
 }

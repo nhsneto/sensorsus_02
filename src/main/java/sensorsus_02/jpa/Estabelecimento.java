@@ -44,6 +44,10 @@ import javax.persistence.Table;
                     name = "Estabelecimento.PorLogradouroSubstring",
                     query = "SELECT e FROM Estabelecimento e "
                             + "WHERE SUBSTRING(e.endereco.logradouro, 1, 2) = 'Av' ORDER BY e.nome"
+            ),
+            @NamedQuery(
+                    name = "Estabelecimento.PorTelefone",
+                    query = "SELECT e FROM Estabelecimento e WHERE :telefone MEMBER OF e.telefones"
             )
         }
 )
