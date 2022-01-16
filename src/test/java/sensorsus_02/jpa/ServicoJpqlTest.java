@@ -110,4 +110,20 @@ public class ServicoJpqlTest extends GenericTest {
         Long total = 2L;
         assertEquals(total, query.getSingleResult());
     }
+    
+    @Test
+    public void servicosNaoContidosNoEstabelecimento() {
+        logger.info("Executando servicosNaoContidosNoEstabelecimento()");
+        TypedQuery<Servico> query = em.createNamedQuery("Servico.NaoContidosNoEstabelecimento", 
+                Servico.class);
+        query.setParameter("estabelecimento", em.find(Estabelecimento.class, 5L));
+        List<Servico> servicos = query.getResultList();
+        assertEquals(6, servicos.size());
+        assertEquals("Atendimento Inicial Ambulatório", servicos.get(0).getNome());
+        assertEquals("Jantar", servicos.get(1).getNome());
+        assertEquals("Limpeza da Recepção", servicos.get(2).getNome());
+        assertEquals("Limpeza dos Banheiros", servicos.get(3).getNome());
+        assertEquals("Recepção do Paciente", servicos.get(4).getNome());
+        assertEquals("Vacinação", servicos.get(5).getNome());
+    }
 }

@@ -30,6 +30,11 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "Servico.NumeroTotal",
             query = "SELECT COUNT(s) FROM Servico s"
+        ),
+        @NamedQuery(
+            name = "Servico.NaoContidosNoEstabelecimento",
+            query = "SELECT s FROM Servico s JOIN FETCH Estabelecimento es "
+                    + "WHERE es = :estabelecimento AND s NOT MEMBER OF es.servicos ORDER BY s.nome"
         )
     }
 )
