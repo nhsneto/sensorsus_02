@@ -23,6 +23,11 @@ import javax.persistence.NamedQuery;
         @NamedQuery(
             name = "Paciente.QuantidadeTotal",
             query = "SELECT COUNT(p) FROM Paciente p"
+        ),
+        @NamedQuery(
+            name = "Paciente.PorAvaliacao",
+            query = "SELECT pa FROM Paciente pa JOIN FETCH Avaliacao a "
+                    + "WHERE :avaliacao MEMBER OF pa.avaliacoes"
         )
     }
 )
