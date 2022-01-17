@@ -111,4 +111,15 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         }
         return false;
     }
+    
+    @Test
+    public void profissionaisSemAvaliacao() {
+        logger.info("Executando profissionaisQuantidadeDeAvaliacoes()");
+        TypedQuery<ProfissionalSaude> query = em.createQuery("SELECT ps FROM ProfissionalSaude ps "
+                + "WHERE ps.avaliacoes IS EMPTY", ProfissionalSaude.class);
+        List<ProfissionalSaude> profissionais = query.getResultList();
+        profissionais.forEach(profissional -> {
+            assertEquals(0, profissional.getAvaliacoes().size());
+        });
+    }
 }
