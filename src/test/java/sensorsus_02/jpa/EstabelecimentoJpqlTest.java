@@ -170,4 +170,21 @@ public class EstabelecimentoJpqlTest extends GenericTest {
             assertTrue(estabelecimento.getTelefones().size() > 1);
         });
     }
+    
+    @Test
+    public void estabelecimentosQueNaoPossuiServicoEspecifico() {
+        logger.info("Executando estabelecimentosQueNaoPossuiServicoEspecifico()");
+        TypedQuery<Estabelecimento> query = 
+                em.createNamedQuery("Estabelecimento.QueNaoPossuiServicoEspecifico", 
+                        Estabelecimento.class);
+        Servico servico = em.find(Servico.class, 6L);
+        query.setParameter("servico", servico);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        String[] nomes = {"Hospital Barão de Lucena", "Hospital Oswaldo Cruz", 
+            "Hospital Otávio de Freitas", "Hospital Restauração"};
+        for (int i = 0; i < estabelecimentos.size(); i++) {
+            assertEquals(nomes[i], estabelecimentos.get(i).getNome());
+            assertFalse(estabelecimentos.get(i).getServicos().contains(servico));
+        }
+    }
 }

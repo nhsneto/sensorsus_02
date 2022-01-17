@@ -48,6 +48,11 @@ import javax.persistence.Table;
             @NamedQuery(
                     name = "Estabelecimento.PorTelefone",
                     query = "SELECT e FROM Estabelecimento e WHERE :telefone MEMBER OF e.telefones"
+            ),
+            @NamedQuery(
+                    name = "Estabelecimento.QueNaoPossuiServicoEspecifico",
+                    query = "SELECT e FROM Estabelecimento e "
+                            + "WHERE :servico NOT MEMBER OF e.servicos ORDER BY e.nome"
             )
         }
 )
