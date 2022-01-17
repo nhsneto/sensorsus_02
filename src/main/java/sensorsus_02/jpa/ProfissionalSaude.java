@@ -21,6 +21,10 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "ProfissionalSaude.QuantidadeTotal",
             query = "SELECT COUNT(ps) FROM ProfissionalSaude ps"
+        ),
+        @NamedQuery(
+            name = "ProfissionalSaude.NascidosNosAnos80",
+            query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.dataNascimento BETWEEN ?1 AND ?2"
         )
     }
 )

@@ -1,5 +1,7 @@
 package sensorsus_02.jpa;
 
+import java.util.Calendar;
+import java.util.List;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -37,5 +39,19 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         query.setParameter(1, "%111%");
         ProfissionalSaude profissionalSaude = query.getSingleResult();
         assertEquals("Amanda", profissionalSaude.getNome());
+    }
+    
+    @Test
+    public void profissionaisNascidosNosAnos80() {
+        logger.info("Executando profissionaisPorDataNascimento()");
+        TypedQuery<ProfissionalSaude> query = 
+                em.createNamedQuery("ProfissionalSaude.NascidosNosAnos80", ProfissionalSaude.class);
+        query.setParameter(1, getData(1, Calendar.JANUARY, 1980));
+        query.setParameter(2, getData(31, Calendar.DECEMBER, 1989));
+        List<ProfissionalSaude> profissionais = query.getResultList();
+        String[] nomes = {"Silvio", "Jessica"};
+        for (int i = 0; i < profissionais.size(); i++) {
+            assertEquals(nomes[i], profissionais.get(i).getNome());
+        }
     }
 }
