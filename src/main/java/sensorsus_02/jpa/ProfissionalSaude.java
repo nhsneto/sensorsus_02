@@ -37,6 +37,10 @@ import javax.persistence.Table;
             query = "SELECT DISTINCT ps FROM ProfissionalSaude ps JOIN Avaliacao a "
                     + "ON a MEMBER OF ps.avaliacoes "
                     + "WHERE :servico MEMBER OF a.estabelecimento.servicos"
+        ),
+        @NamedQuery(
+            name = "ProfissionalSaude.PorPadraoEmail",
+            query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.email LIKE :padrao"
         )
     }
 )

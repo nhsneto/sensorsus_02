@@ -2,6 +2,7 @@ package sensorsus_02.jpa;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
@@ -120,6 +121,19 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         List<ProfissionalSaude> profissionais = query.getResultList();
         profissionais.forEach(profissional -> {
             assertEquals(0, profissional.getAvaliacoes().size());
+        });
+    }
+    
+    @Test
+    public void profissionalPorPadraoEmail() {
+        logger.info("Executando profissionalPorPadraoEmail()");
+        TypedQuery<ProfissionalSaude> query = 
+                em.createNamedQuery("ProfissionalSaude.PorPadraoEmail", ProfissionalSaude.class);
+        query.setParameter("padrao", "%@gmail.com");
+        List<ProfissionalSaude> profissionais = query.getResultList();
+        assertEquals(4, profissionais.size());
+        profissionais.forEach(profissional -> {
+            assertTrue(Pattern.compile("@gmail.com").matcher(profissional.getEmail()).find());
         });
     }
 }
