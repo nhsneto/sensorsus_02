@@ -3,7 +3,6 @@ package sensorsus_02.jpa;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -72,7 +71,7 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
     }
     
     @Test
-    public void profissinaisPorBairro() {
+    public void profissionaisPorBairro() {
         logger.info("Executando profissionaisPorBairro()");
         TypedQuery<ProfissionalSaude> query = em.createNamedQuery("ProfissionalSaude.PorBairro", 
                 ProfissionalSaude.class);
