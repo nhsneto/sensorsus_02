@@ -2,6 +2,7 @@ package sensorsus_02.jpa;
 
 import java.util.Calendar;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -90,5 +91,24 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         query.setParameter("substring", "poucos");
         ProfissionalSaude profissionalSaude = query.getSingleResult();
         assertEquals("Silvio", profissionalSaude.getNome());
+    }
+    
+    @Test
+    public void profissionaisPorServico() {
+        logger.info("Executando profissionaisPorServico()");
+        TypedQuery<ProfissionalSaude> query = em.createNamedQuery("ProfissionalSaude.PorServico", 
+                ProfissionalSaude.class);
+        Servico servico = em.find(Servico.class, 5L);
+        query.setParameter("servico", servico);
+        ProfissionalSaude profissionalSaude = query.getSingleResult();
+        assertEquals("Camila", profissionalSaude.getNome());
+        assertTrue(existeAvaliacaoSobreServico(profissionalSaude.getAvaliacoes(), servico));
+    }
+    
+    private boolean existeAvaliacaoSobreServico(List<Avaliacao> avaliacoes, Servico servico) {
+        for (Avaliacao a : avaliacoes) {
+            if (a.getEstabelecimento().getServicos().contains(servico)) return true;
+        }
+        return false;
     }
 }
