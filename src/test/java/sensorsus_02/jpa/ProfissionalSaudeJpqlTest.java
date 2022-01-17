@@ -79,4 +79,16 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         ProfissionalSaude profissional = query.getSingleResult();
         assertEquals("Amanda", profissional.getNome());
     }
+    
+    @Test
+    public void profissionaisPorSubstringComentario() {
+        logger.info("Executando profissinonaisPorSubstringComentario()");
+        String jpql = "SELECT DISTINCT ps FROM ProfissionalSaude ps JOIN FETCH Avaliacao a "
+                + "ON a MEMBER OF ps.avaliacoes "
+                + "WHERE SUBSTRING(LOWER(a.comentario), 1, 6) = :substring";
+        TypedQuery<ProfissionalSaude> query = em.createQuery(jpql, ProfissionalSaude.class);
+        query.setParameter("substring", "poucos");
+        ProfissionalSaude profissionalSaude = query.getSingleResult();
+        assertEquals("Silvio", profissionalSaude.getNome());
+    }
 }
