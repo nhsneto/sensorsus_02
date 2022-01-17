@@ -27,4 +27,15 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         Long totalEsperado = 4L;
         assertEquals(totalEsperado, total);
     }
+    
+    @Test
+    public void profissionalSaudePorPadraoConselhoRegional() {
+        logger.info("Executando profissionalSaudePorPadraoConselhoRegional()");
+        String jpql = "SELECT ps FROM ProfissionalSaude ps "
+                + "WHERE ps.inscricaoConselhoRegional LIKE ?1";
+        TypedQuery<ProfissionalSaude> query = em.createQuery(jpql, ProfissionalSaude.class);
+        query.setParameter(1, "%111%");
+        ProfissionalSaude profissionalSaude = query.getSingleResult();
+        assertEquals("Amanda", profissionalSaude.getNome());
+    }
 }
