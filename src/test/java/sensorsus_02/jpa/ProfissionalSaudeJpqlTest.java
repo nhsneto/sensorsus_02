@@ -54,4 +54,18 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
             assertEquals(nomes[i], profissionais.get(i).getNome());
         }
     }
+    
+    @Test
+    public void profissinaisPorEstabelecimento() {
+        logger.info("Executando profissinaisPorEstabelecimento()");
+        String jpql = "SELECT DISTINCT ps FROM ProfissionalSaude ps JOIN Avaliacao a "
+                + "ON a MEMBER OF ps.avaliacoes WHERE a.estabelecimento = :estabelecimento";
+        TypedQuery<ProfissionalSaude> query = em.createQuery(jpql, ProfissionalSaude.class);
+        Estabelecimento estabelecimento = em.find(Estabelecimento.class, 5L);
+        query.setParameter("estabelecimento", estabelecimento);
+        ProfissionalSaude profissionalSaude = query.getSingleResult();
+        Long id = 7L;
+        assertEquals(id, profissionalSaude.getId());
+        assertEquals("Camila", profissionalSaude.getNome());
+    }
 }
