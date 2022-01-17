@@ -131,4 +131,18 @@ public class PacienteJpqlTest extends GenericTest {
         }
         return false;
     }
+    
+    @Test
+    public void pacientesPorBairro() {
+        logger.info("Executando pacientesPorBairro()");
+        String jpql = "SELECT DISTINCT pa FROM Paciente pa JOIN Avaliacao a "
+                + "ON a MEMBER OF pa.avaliacoes WHERE a.estabelecimento.endereco.bairro = ?1";
+        TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class);
+        String bairro = "Iputinga";
+        query.setParameter(1, bairro);
+        Paciente paciente = query.getSingleResult();
+        Long id = 3L;
+        assertEquals(id, paciente.getId());
+        assertEquals("Severina", paciente.getNome());
+    }
 }
