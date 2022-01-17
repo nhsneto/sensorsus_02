@@ -159,4 +159,15 @@ public class EstabelecimentoJpqlTest extends GenericTest {
         assertEquals("Hospital Otávio de Freitas", estabelecimento.getNome());
         assertTrue(estabelecimento.getTelefones().contains(telefone));
     }
+    
+    @Test
+    public void estabelecimentosComMaisDeUmTelefone() {
+        logger.info("Executando estabelecimentosComMaisDeUmTelefone()");
+        TypedQuery<Estabelecimento> query = em.createQuery("SELECT DISTINCT e FROM Estabelecimento e WHERE SIZE(e.telefones) > ?1", Estabelecimento.class);
+        query.setParameter(1, 1);
+        List<Estabelecimento> estabelecimentos = query.getResultList();
+        estabelecimentos.forEach(estabelecimento -> {
+            assertTrue(estabelecimento.getTelefones().size() > 1);
+        });
+    }
 }
