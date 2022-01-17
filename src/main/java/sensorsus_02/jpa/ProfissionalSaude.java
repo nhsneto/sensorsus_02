@@ -25,6 +25,12 @@ import javax.persistence.Table;
         @NamedQuery(
             name = "ProfissionalSaude.NascidosNosAnos80",
             query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.dataNascimento BETWEEN ?1 AND ?2"
+        ),
+        @NamedQuery(
+            name = "ProfissionalSaude.PorBairro",
+            query = "SELECT DISTINCT ps FROM ProfissionalSaude ps JOIN Avaliacao a "
+                    + "ON a MEMBER OF ps.avaliacoes "
+                    + "WHERE a.estabelecimento.endereco.bairro = :bairro"
         )
     }
 )

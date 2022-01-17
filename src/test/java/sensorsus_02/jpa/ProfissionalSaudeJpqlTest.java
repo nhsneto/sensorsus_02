@@ -68,4 +68,15 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         assertEquals(id, profissionalSaude.getId());
         assertEquals("Camila", profissionalSaude.getNome());
     }
+    
+    @Test
+    public void profissinaisPorBairro() {
+        logger.info("Executando profissionaisPorBairro()");
+        TypedQuery<ProfissionalSaude> query = em.createNamedQuery("ProfissionalSaude.PorBairro", 
+                ProfissionalSaude.class);
+        String bairro = "Derby";
+        query.setParameter("bairro", bairro);
+        ProfissionalSaude profissional = query.getSingleResult();
+        assertEquals("Amanda", profissional.getNome());
+    }
 }
