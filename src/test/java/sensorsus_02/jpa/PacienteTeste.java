@@ -40,7 +40,7 @@ public class PacienteTeste extends Teste {
         endereco.setComplemento("Complemento teste");
         endereco.setBairro("Bairro teste");
         endereco.setCidade("Cidade teste");
-        endereco.setEstado("Estado teste");
+        endereco.setEstado("Pernambuco");
 
         paciente.adicionaAvaliacao(avaliacao);
         avaliacao.setEstabelecimento(estabelecimento);
