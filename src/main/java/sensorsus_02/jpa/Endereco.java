@@ -12,6 +12,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_ENDERECO")
@@ -49,20 +54,39 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToOne(mappedBy = "endereco", optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "endereco", optional = false, cascade = CascadeType.ALL, 
+            fetch = FetchType.LAZY)
     private Estabelecimento estabelecimento;
 
-    @Column(name = "TXT_ESTADO", nullable = false, length = 50)
+    @NotBlank(message = "sensorsus_02.jpa.Endereco.estado.blank")
+    @Size(max = 80, message = "{sensorsus_02.jpa.Endereco.estado.max}")
+    @ValidaEstado
+    @Column(name = "TXT_ESTADO")
     private String estado;
-    @Column(name = "TXT_CIDADE", nullable = false, length = 150)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Endereco.cidade.blank}")
+    @Size(max = 150, message = "{sensorsus_02.jpa.Endereco.cidade.max}")
+    @Column(name = "TXT_CIDADE")
     private String cidade;
-    @Column(name = "TXT_BAIRRO", nullable = false, length = 150)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Endereco.bairro.blank}")
+    @Size(max = 150, message = "{sensorsus_02.jpa.Endereco.bairro.max}")
+    @Column(name = "TXT_BAIRRO")
     private String bairro;
-    @Column(name = "TXT_LOGRADOURO", nullable = false, length = 200)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Endereco.logradouro.blank}")
+    @Size(max = 255, message = "{sensorsus_02.jpa.Endereco.logradouro.max}")
+    @Column(name = "TXT_LOGRADOURO")
     private String logradouro;
-    @Column(name = "INT_NUMERO", nullable = false, length = 6)
+    
+    @NotNull(message = "{sensorsus_02.jpa.Endereco.numero.null}")
+    @Min(value = 1, message = "{sensorsus_02.jpa.Endereco.numero.min}")
+    @Max(value = 99999, message = "{sensorsus_02.jpa.Endereco.numero.max}")
+    @Column(name = "INT_NUMERO")
     private Integer numero;
-    @Column(name = "TXT_COMPLEMENTO", nullable = true, length = 255)
+    
+    @Size(max = 255, message = "{sensorsus_02.jpa.Endereco.complemento.max}")
+    @Column(name = "TXT_COMPLEMENTO")
     private String complemento;
 
     public Long getId() {
