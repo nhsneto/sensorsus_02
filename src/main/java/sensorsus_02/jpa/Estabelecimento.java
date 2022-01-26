@@ -22,6 +22,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_ESTABELECIMENTO")
@@ -76,15 +79,23 @@ public class Estabelecimento implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "ID_SERVICO") })
     private List<Servico> servicos;
     
+    @Size(max = 3, message = "{sensorsus_02.jpa.Estabelecimento.telefones.max}")
+    @ValidaTelefone
     @ElementCollection
     @CollectionTable(name = "TB_TELEFONE", joinColumns = @JoinColumn(name = "ID_ESTABELECIMENTO",
             nullable = false))
     @Column(name = "TXT_TELEFONE", nullable = true, length = 20)
     private Collection<String> telefones;
     
-    @Column(name = "TXT_NOME", nullable = false, length = 255)
+    @NotBlank(message = "{sensorsus_02.jpa.Estabelecimento.nome.blank}")
+    @Size(max = 255, message = "{sensorsus_02.jpa.Estabelecimento.nome.max}")
+    @Column(name = "TXT_NOME")
     private String nome;
-    @Column(name = "TXT_CODIGO_CNES", nullable = false, unique = true, length = 40)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Estabelecimento.codigoCnes.blank}")
+    @Pattern(regexp = "[0-9]{15}", message = "{sensorsus_02.jpa.Estabelecimento.codigoCnes}")
+    @Size(min = 15, max = 15, message = "{sensorsus_02.jpa.Estabelecimento.codigoCnes.size}")
+    @Column(name = "TXT_CODIGO_CNES")
     private String codigoCnes;
 
     public Long getId() {
