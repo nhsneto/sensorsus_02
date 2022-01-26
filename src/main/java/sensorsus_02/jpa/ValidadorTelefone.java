@@ -25,7 +25,7 @@ public class ValidadorTelefone implements ConstraintValidator<ValidaTelefone, Co
     
     @Override
     public boolean isValid(Collection<String> telefones, ConstraintValidatorContext context) {
-        return isTelefonesValidos(telefones);
+        return telefones == null ? true : isTelefonesValidos(telefones);
     }
     
     private boolean isTelefonesValidos(Collection<String> telefones) {
