@@ -31,7 +31,7 @@ public class ProfissionalSaudeTeste extends Teste {
         avaliacao.setComentario("Teste avaliação");
 
         Estabelecimento estabelecimento = new Estabelecimento();
-        estabelecimento.setCodigoCnes("13456789");
+        estabelecimento.setCodigoCnes("111112222233333");
         estabelecimento.setNome("UPA Teste");
 
         Endereco endereco = new Endereco();

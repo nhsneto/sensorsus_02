@@ -20,7 +20,7 @@ public class EnderecoTeste extends Teste {
         
         Estabelecimento estabelecimento = new Estabelecimento();
         estabelecimento.setNome("Farmácia do Estado de Pernambuco");
-        estabelecimento.setCodigoCnes("00000555550000055555");
+        estabelecimento.setCodigoCnes("999998888877777");
         estabelecimento.setEndereco(endereco);
         
         em.persist(endereco);
