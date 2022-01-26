@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_SERVICO")
@@ -43,9 +45,15 @@ public class Servico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "TXT_NOME", nullable = false, length = 255)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Servico.nome.blank}")
+    @Size(max = 255, message = "{sensorsus_02.jpa.Servico.nome.max}")
+    @Column(name = "TXT_NOME")
     private String nome;
-    @Column(name = "TXT_DEPARTAMENTO", nullable = true, length = 255)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Servico.departamento.blank}")
+    @Size(max = 255, message = "{sensorsus_02.jpa.Servico.departamento.max}")
+    @Column(name = "TXT_DEPARTAMENTO")
     private String departamento;
     
     public Long getId() {
