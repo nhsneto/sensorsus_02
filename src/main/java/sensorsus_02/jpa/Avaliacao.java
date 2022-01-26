@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_AVALIACAO")
@@ -50,7 +52,9 @@ public class Avaliacao implements Serializable {
     @JoinColumn(name = "ID_ESTABELECIMENTO", referencedColumnName = "ID")
     private Estabelecimento estabelecimento;
     
-    @Column(name = "TXT_COMENTARIO", nullable = false, length = 255)
+    @NotBlank(message = "{sensorsus_02.jpa.Avaliacao.comentario.blank}")
+    @Size(max = 255, message = "{sensorsus_02.jpa.Avaliacao.comentario.max}")
+    @Column(name = "TXT_COMENTARIO")
     private String comentario;
 
     public Long getId() {

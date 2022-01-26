@@ -43,7 +43,6 @@ public class ValidationEnderecoTest extends Teste {
             assertNull(endereco.getId());
             throw e;
         }
-        
     }
     
     @Test(expected = ConstraintViolationException.class)
