@@ -84,7 +84,7 @@ public class Estabelecimento implements Serializable {
     @ElementCollection
     @CollectionTable(name = "TB_TELEFONE", joinColumns = @JoinColumn(name = "ID_ESTABELECIMENTO",
             nullable = false))
-    @Column(name = "TXT_TELEFONE", nullable = true, length = 20)
+    @Column(name = "TXT_TELEFONE")
     private Collection<String> telefones;
     
     @NotBlank(message = "{sensorsus_02.jpa.Estabelecimento.nome.blank}")
