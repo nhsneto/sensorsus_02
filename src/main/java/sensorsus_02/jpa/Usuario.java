@@ -14,6 +14,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_USUARIO")
@@ -24,16 +29,31 @@ public abstract class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Usuario.nome.blank}")
     @Column(name = "TXT_NOME")
     protected String nome;
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Usuario.email.blank}")
+    @Email(message = "{sensorsus_02.jpa.Usuario.email}")
     @Column(name = "TXT_EMAIL")
     protected String email;
+    
+    @Past(message = "{sensorsus_02.jpa.Usuario.dataNascimento}")
     @Temporal(TemporalType.DATE)
-    @Column(name = "DT_NASCIMENTO", nullable = true)
+    @Column(name = "DT_NASCIMENTO")
     protected Date dataNascimento;
-    @Column(name = "TXT_LOGIN", nullable = false, length = 30)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Usuario.login.blank}")
+    @Size(max = 30, message = "{sensorsus_02.jpa.Usuario.login.size}")
+    @Pattern(regexp = "[a-z]+[0-9]*", message = "{sensorsus_02.jpa.Usuario.login}")
+    @Column(name = "TXT_LOGIN")
     private String login;
-    @Column(name = "TXT_SENHA", nullable = false, length = 15)
+    
+    @NotBlank(message = "{sensorsus_02.jpa.Usuario.senha.blank}")
+    @Size(max = 15 ,message = "{sensorsus_02.jpa.Usuario.senha.size}")
+    @Pattern(regexp = ".{4,15}", message = "{sensorsus_02.jpa.Usuario.senha}")
+    @Column(name = "TXT_SENHA")
     protected String senha;
 
     public Long getId() {
