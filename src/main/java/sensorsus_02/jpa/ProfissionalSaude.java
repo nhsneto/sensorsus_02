@@ -13,6 +13,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TB_PROFISSIONAL_SAUDE")
@@ -52,7 +53,9 @@ public class ProfissionalSaude extends Usuario implements Serializable {
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Avaliacao> avaliacoes;
 
-    @Column(name = "TXT_INSCRICAO_CONSELHO_REGIONAL", nullable = false, length = 50)
+    @NotBlank(message = "{sensorsus_02.jpa.ProfissionalSaude.inscricaoConselhoRegional.blank}")
+    @ValidaConselhoRegional
+    @Column(name = "TXT_INSCRICAO_CONSELHO_REGIONAL")
     private String inscricaoConselhoRegional;
 
     public List<Avaliacao> getAvaliacoes() {
