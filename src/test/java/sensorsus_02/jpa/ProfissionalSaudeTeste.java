@@ -19,7 +19,7 @@ public class ProfissionalSaudeTeste extends Teste {
     public void persistirProfissionalSaude() {
         ProfissionalSaude profissionalSaude = new ProfissionalSaude();
         profissionalSaude.setInscricaoConselhoRegional("123456");
-        profissionalSaude.setLogin("profissionalSaude1");
+        profissionalSaude.setLogin("jsac6");
         profissionalSaude.setNome("João da Silva");
         profissionalSaude.setEmail("joao@gmail.com");
         profissionalSaude.setSenha("#1234567890#");
