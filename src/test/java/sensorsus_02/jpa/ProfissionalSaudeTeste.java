@@ -18,7 +18,7 @@ public class ProfissionalSaudeTeste extends Teste {
     @Test
     public void persistirProfissionalSaude() {
         ProfissionalSaude profissionalSaude = new ProfissionalSaude();
-        profissionalSaude.setInscricaoConselhoRegional("123456");
+        profissionalSaude.setInscricaoConselhoRegional("coren-pe888.888-te");
         profissionalSaude.setLogin("jsac6");
         profissionalSaude.setNome("João da Silva");
         profissionalSaude.setEmail("joao@gmail.com");
@@ -62,7 +62,7 @@ public class ProfissionalSaudeTeste extends Teste {
         assertEquals("asrf4", profissionalSaude.getLogin());
         assertEquals("amandasilva20@gmail.com", profissionalSaude.getEmail());
         assertEquals("amanda1234", profissionalSaude.getSenha());
-        assertEquals("111222333444", profissionalSaude.getInscricaoConselhoRegional());
+        assertEquals("coren-pe111.111-te", profissionalSaude.getInscricaoConselhoRegional());
         Calendar c = Calendar.getInstance();
         c.set(1999, Calendar.DECEMBER, 21, 0, 0, 0);
         assertEquals(c.getTime().toString(), profissionalSaude.getDataNascimento().toString());

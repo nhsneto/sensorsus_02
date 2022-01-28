@@ -37,7 +37,7 @@ public class ProfissionalSaudeJpqlTest extends GenericTest{
         String jpql = "SELECT ps FROM ProfissionalSaude ps "
                 + "WHERE ps.inscricaoConselhoRegional LIKE ?1";
         TypedQuery<ProfissionalSaude> query = em.createQuery(jpql, ProfissionalSaude.class);
-        query.setParameter(1, "%111%");
+        query.setParameter(1, "%111.111-te%");
         ProfissionalSaude profissionalSaude = query.getSingleResult();
         assertEquals("Amanda", profissionalSaude.getNome());
     }
