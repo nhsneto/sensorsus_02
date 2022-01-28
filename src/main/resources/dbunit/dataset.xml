@@ -144,13 +144,13 @@
     
     <TB_PACIENTE id_usuario="4" txt_numero_sus="444444444444444"/>
         
-    <TB_PROFISSIONAL_SAUDE id_usuario="5" txt_inscricao_conselho_regional="coren-pe111.111-te"/> <!-- 111222333444 -->
+    <TB_PROFISSIONAL_SAUDE id_usuario="5" txt_inscricao_conselho_regional="coren-pe111.111-te"/>
     
-    <TB_PROFISSIONAL_SAUDE id_usuario="6" txt_inscricao_conselho_regional="crm-pe11111"/> <!-- 999999999999 -->
+    <TB_PROFISSIONAL_SAUDE id_usuario="6" txt_inscricao_conselho_regional="crm-pe11111"/>
     
-    <TB_PROFISSIONAL_SAUDE id_usuario="7" txt_inscricao_conselho_regional="coren-pe222.222-te"/> <!-- 888888888888 -->
+    <TB_PROFISSIONAL_SAUDE id_usuario="7" txt_inscricao_conselho_regional="coren-pe222.222-te"/>
     
-    <TB_PROFISSIONAL_SAUDE id_usuario="8" txt_inscricao_conselho_regional="crm-pe22222"/> <!-- 777777777777 -->
+    <TB_PROFISSIONAL_SAUDE id_usuario="8" txt_inscricao_conselho_regional="crm-pe22222"/>
     
     <!-- Avaliacao id = 1 -->
     <TB_AVALIACAO txt_comentario="O atendimento na recepção foi rápido, apesar da fila grande" 
