@@ -51,8 +51,8 @@ public abstract class Usuario implements Serializable {
     private String login;
     
     @NotBlank(message = "{sensorsus_02.jpa.Usuario.senha.blank}")
-    @Size(max = 15 ,message = "{sensorsus_02.jpa.Usuario.senha.size}")
-    @Pattern(regexp = ".{4,15}", message = "{sensorsus_02.jpa.Usuario.senha}")
+    @Size(min = 4, message = "{sensorsus_02.jpa.Usuario.senha.size.min}")
+    @Size(max = 15, message = "{sensorsus_02.jpa.Usuario.senha.size.max}")
     @Column(name = "TXT_SENHA")
     protected String senha;
 

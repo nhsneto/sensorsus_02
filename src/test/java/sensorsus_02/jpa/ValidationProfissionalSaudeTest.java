@@ -26,17 +26,16 @@ public class ValidationProfissionalSaudeTest extends Teste {
             em.persist(profissionalSaude);
             em.flush();
         } catch (ConstraintViolationException e) {
-            assertEquals(7, e.getConstraintViolations().size());
+            assertEquals(6, e.getConstraintViolations().size());
             e.getConstraintViolations().forEach(violation -> {
                 assertThat(violation.getPropertyPath() + " - " + violation.getMessage(), 
                     CoreMatchers.anyOf(
-                    startsWith("nome - O campo nome não pode ser null ou vazio"),
-                    startsWith("dataNascimento - O campo dataNascimento deve possuir uma data do passado"),
-                    startsWith("email - O campo email é inválido"),
-                    startsWith("inscricaoConselhoRegional - O campo inscricaoConselhoRegional é inválido"),
-                    startsWith("login - O campo login é inválido"),
-                    startsWith("senha - O campo senha deve possuir no máximo 15 caracteres"),
-                    startsWith("senha - O campo senha é inválido")
+                    startsWith("nome - O campo nome não pode ser null ou vazio"), 
+                    startsWith("dataNascimento - O campo dataNascimento deve possuir uma data do passado"), 
+                    startsWith("email - O campo email é inválido"), 
+                    startsWith("inscricaoConselhoRegional - O campo inscricaoConselhoRegional é inválido"), 
+                    startsWith("login - O campo login é inválido"), 
+                    startsWith("senha - O campo senha deve possuir no máximo 15 caracteres")
                 ));
             });
             assertNull(profissionalSaude.getId());
