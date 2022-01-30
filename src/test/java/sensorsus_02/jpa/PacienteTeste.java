@@ -18,7 +18,7 @@ public class PacienteTeste extends Teste {
     @Test
     public void persistirPaciente() {
         Paciente paciente = new Paciente();
-        paciente.setNumeroSus("123456");
+        paciente.setNumeroSus("123451234512345");
         paciente.setLogin("paciente1");
         paciente.setNome("João da Silva");
         paciente.setEmail("joao@gmail.com");
