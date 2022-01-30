@@ -28,7 +28,7 @@ public class ValidationPacienteTest extends Teste {
             em.persist(Paciente);
             em.flush();
         } catch (ConstraintViolationException e) {
-            assertEquals(6, e.getConstraintViolations().size());
+            assertEquals(7, e.getConstraintViolations().size());
             e.getConstraintViolations().forEach(violation -> {
                 assertThat(violation.getPropertyPath() + " - " + violation.getMessage(),
                         CoreMatchers.anyOf(
@@ -36,9 +36,9 @@ public class ValidationPacienteTest extends Teste {
                                 startsWith("dataNascimento - O campo dataNascimento deve possuir uma data do passado"),
                                 startsWith("email - O campo email é inválido"),
                                 startsWith("numeroSus - O campo numeroSUS deve ter 15 caracteres"),
+                                startsWith("numeroSus - O campo numeroSus é inválido"),
                                 startsWith("login - O campo login é inválido"),
-                                startsWith("senha - O campo senha deve possuir no máximo 15 caracteres"),
-                                startsWith("senha - O campo senha é inválido")
+                                startsWith("senha - O campo senha deve possuir no máximo 15 caracteres")
                         ));
             });
             assertNull(Paciente.getId());
@@ -60,12 +60,13 @@ public class ValidationPacienteTest extends Teste {
         try {
             em.flush();
         } catch (ConstraintViolationException e) {
-            assertEquals(1, e.getConstraintViolations().size());
+            assertEquals(3, e.getConstraintViolations().size());
             e.getConstraintViolations().forEach(violation -> {
                 assertThat(violation.getPropertyPath() + " - " + violation.getMessage(),
                         CoreMatchers.anyOf(
                                 startsWith("dataNascimento - O campo dataNascimento deve possuir uma data do passado"),
-                                startsWith("numeroSus - O campo numeroSus não pode conter caracteres especiais")
+                                startsWith("numeroSus - O campo numeroSUS deve ter 15 caracteres"),
+                                startsWith("numeroSus - O campo numeroSus é inválido")
                         ));
             });
             throw e;

@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import java.util.List;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_PACIENTE")
@@ -49,7 +52,10 @@ public class Paciente extends Usuario implements Serializable {
             cascade = javax.persistence.CascadeType.ALL, orphanRemoval = true)
     private List<Avaliacao> avaliacoes;
 
-    @Column(name = "TXT_NUMERO_SUS", nullable = false, length = 50)
+    @NotBlank(message = "{sensorsus_02.jpa.Paciente.numeroSus.blank}")
+    @Size(min = 15, max = 15, message = "{sensorsus_02.jpa.Paciente.numeroSus.size}")
+    @Pattern(regexp = "[0-9]{15}", message = "{sensorsus_02.jpa.Paciente.numeroSus}")
+    @Column(name = "TXT_NUMERO_SUS")
     private String numeroSus;
 
     public String getNumeroSus() {
